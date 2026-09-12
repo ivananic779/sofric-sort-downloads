@@ -178,6 +178,16 @@
   .callout p + p { margin-top: 10px; }
   .callout.warn { border-left-color: var(--guess); }
 
+  .shot { margin: 24px 0 4px; }
+  .shot img {
+    display: block; width: 100%; height: auto;
+    border: 1px solid var(--line); border-radius: 9px; background: var(--sunken);
+  }
+  .shot figcaption {
+    font: 400 12px/1.5 var(--mono); color: var(--text-faint);
+    margin-top: 9px; text-align: center;
+  }
+
   ul.plain { margin: 14px 0 0; padding-left: 18px; max-width: 68ch; }
   ul.plain li { margin-bottom: 10px; color: var(--text-dim); font-size: 15px; }
   ul.plain li strong { color: var(--text); }
@@ -216,6 +226,12 @@
   <p class="lede" data-en>Look, type, Enter. Everything else is there to keep that going.</p>
   <p class="lede" data-hr>Pogledaj, upiši, Enter. Sve ostalo postoji da to ne prekida.</p>
 
+  <figure class="shot">
+    <img src="img/sorting.png" alt="" loading="lazy" decoding="async">
+    <figcaption data-en>The sorting screen: the photo, the strip of everything else beneath it, and how far you have got, top right. &nbsp;The photographs are left out of these pictures.</figcaption>
+    <figcaption data-hr>Zaslon za razvrstavanje: fotografija, traka sa svime ostalim ispod nje i dokle ste stigli, gore desno. &nbsp;Fotografije su na ovim slikama izostavljene.</figcaption>
+  </figure>
+
   <ol class="loop">
     <li>
       <span class="step">01</span>
@@ -246,6 +262,11 @@
     </li>
   </ol>
 
+  <figure class="shot">
+    <img src="img/typing.png" alt="" loading="lazy" decoding="async">
+    <figcaption data-en>A burst selected and a number typed. Enter files the whole run. &nbsp;The photographs are left out of these pictures.</figcaption>
+    <figcaption data-hr>Ozna&#269;en rafal i upisan broj. Enter sprema cijeli niz. &nbsp;Fotografije su na ovim slikama izostavljene.</figcaption>
+  </figure>
   <div class="callout">
     <p data-en><strong>Your photographs are only ever read.</strong> Sorting copies files out; nothing in the source folder is moved, renamed or altered. One photograph can go to several riders — file it again with a different number, pressing <kbd>&uarr;</kbd> first to outline the other rider's bike.</p>
     <p data-hr><strong>Vaše fotografije se samo čitaju.</strong> Razvrstavanje kopira datoteke; ništa se u izvornoj mapi ne premješta, ne preimenuje niti mijenja. Jedna fotografija može ići kod više vozača — spremite je ponovno s drugim brojem, a prije toga tipkom <kbd>&uarr;</kbd> obrubite motor drugog vozača.</p>
@@ -265,6 +286,34 @@
   <p class="note" data-en>A project whose drive is not plugged in is greyed out, and says so; plug the drive in and it is back. <em>Remove from list</em> only takes it off this list &mdash; nothing on any disk is touched. The photos folder and the albums folder must sit side by side: one inside the other is refused. Switching project, or closing the app, first finishes any photos still being copied, and says so &mdash; nothing you have filed is left half done.</p>
   <p class="note" data-hr>Projekt čiji disk nije priključen prikazan je sivo, uz objašnjenje; priključite disk i opet je tu. <em>Ukloni s popisa</em> samo ga miče s ovog popisa &mdash; ništa se ni na jednom disku ne dira. Mapa s fotografijama i mapa s albumima moraju biti jedna pokraj druge: ako je jedna unutar druge, program to odbija. Prelazak na drugi projekt, kao i zatvaranje programa, najprije dovršava fotografije koje se još kopiraju, i to javlja &mdash; ništa što ste spremili ne ostaje napola.</p>
 
+  <h2 data-en>Sorting the whole job at once</h2>
+  <h2 data-hr>Razvrstavanje cijelog posla odjednom</h2>
+  <p class="lede" data-en><kbd>Shift</kbd>+<kbd>G</kbd> gathers everything you have not decided about into piles that each look like one bike. You name a pile; it files the whole pile at once.</p>
+  <p class="lede" data-hr><kbd>Shift</kbd>+<kbd>G</kbd> skuplja sve o čemu niste odlučili u hrpe od kojih svaka izgleda kao jedan motor. Vi imenujete hrpu; program sprema cijelu hrpu odjednom.</p>
+
+  <figure class="shot">
+    <img src="img/piles.png" alt="" loading="lazy" decoding="async">
+    <figcaption data-en>A pile, with every pile listed down the left. &nbsp;The photographs are left out of these pictures.</figcaption>
+    <figcaption data-hr>Hrpa, sa svim hrpama popisanima lijevo. &nbsp;Fotografije su na ovim slikama izostavljene.</figcaption>
+  </figure>
+
+  <p data-en>It needs no album to exist first, so you can run it before you start. You can also run it in the middle of a job, and then it knows the albums you have already filled. It looks at your photos once, works out the piles, and shows you one pile at a time as a grid. Type the number, press <kbd>Enter</kbd>, and every photo in that pile is filed &mdash; one operation, so one <kbd>Mod</kbd>+<kbd>Z</kbd> takes all of it back out again.</p>
+  <p data-hr>Ne treba mu nijedan album unaprijed, pa ga možete pokrenuti prije nego što počnete. Možete ga pokrenuti i usred posla, i tada zna albume koje ste već napunili. Jednom pregleda vaše fotografije, složi hrpe i pokazuje vam jednu hrpu po jednu, kao mrežu. Upišite broj, pritisnite <kbd>Enter</kbd> i svaka je fotografija iz te hrpe spremljena &mdash; jedna radnja, pa jedan <kbd>Mod</kbd>+<kbd>Z</kbd> vraća sve natrag.</p>
+
+
+  <p data-en><strong><kbd>Space</kbd> opens a photo large enough to read the number.</strong> That is how you name a pile: you read the number off the bike. While it is large, <kbd>&larr;</kbd> <kbd>&rarr;</kbd> go through the pile looking for a frame where the board is clear, <kbd>&uarr;</kbd> <kbd>&darr;</kbd> move the outline to another bike if two riders are in the frame, and <kbd>Esc</kbd> or <kbd>Space</kbd> comes back to the pile. You can type the number and press <kbd>Enter</kbd> without going back &mdash; it files the whole pile either way.</p>
+  <p data-hr><strong><kbd>Space</kbd> otvara fotografiju dovoljno veliku da pročitate broj.</strong> Tako imenujete hrpu: broj pročitate s motora. Dok je uvećana, <kbd>&larr;</kbd> <kbd>&rarr;</kbd> idu kroz hrpu u potrazi za snimkom na kojoj je tablica jasna, <kbd>&uarr;</kbd> <kbd>&darr;</kbd> premještaju obrub na drugi motor ako su u kadru dva vozača, a <kbd>Esc</kbd> ili <kbd>Space</kbd> vraća na hrpu. Broj možete upisati i pritisnuti <kbd>Enter</kbd> bez vraćanja &mdash; svejedno sprema cijelu hrpu.</p>
+
+  <p data-en><strong>Look at the pile before you name it.</strong> About one photo in forty arrives in a pile it does not belong to &mdash; another rider on a machine that looks much the same. <kbd>X</kbd> takes the photos you have selected out of the pile before it is filed, and <kbd>X</kbd> again puts one back, so taking one out by mistake costs nothing. Anything you take out is offered again at the end of the run. <kbd>Tab</kbd> passes over a pile without naming it, and <kbd>Esc</kbd> ends the pass.</p>
+  <p data-hr><strong>Pogledajte hrpu prije nego što je imenujete.</strong> Otprilike jedna fotografija u četrdeset dođe u hrpu kojoj ne pripada &mdash; drugi vozač na motoru koji izgleda vrlo slično. <kbd>X</kbd> vadi označene fotografije iz hrpe prije spremanja, a ponovni <kbd>X</kbd> vraća ih natrag, pa izbacivanje zabunom ništa ne stoji. Sve što izvadite ponudi se ponovno na kraju prolaza. <kbd>Tab</kbd> preskače hrpu bez imenovanja, a <kbd>Esc</kbd> prekida prolaz.</p>
+
+  <p data-en><strong>Every pile is listed down the left,</strong> the way your albums are in the album browser &mdash; its first photo, how many it holds, and what became of it. <kbd>PgUp</kbd> and <kbd>PgDn</kbd> go from one pile to the next, and clicking a pile goes straight to it, so one you passed over is always one click away. The list stays in the order the piles were worked out and never re-sorts itself; what moves is where you are in it. When you name a pile, the app jumps to whichever of the rest most resembles it &mdash; that is what puts the number in the box for you &mdash; and the list shows you where it went.</p>
+  <p data-hr><strong>Sve su hrpe popisane lijevo,</strong> kao i vaši albumi u pregledniku albuma &mdash; prva fotografija, koliko ih sadrži i što je s njom bilo. <kbd>PgUp</kbd> i <kbd>PgDn</kbd> idu s jedne hrpe na sljedeću, a klik na hrpu vodi ravno na nju, pa je hrpa koju ste preskočili uvijek jedan klik daleko. Popis ostaje u redoslijedu kojim su hrpe složene i nikad se sam ne presloži; pomiče se samo mjesto na kojem ste. Kad imenujete hrpu, program skoči na onu koja joj najviše sliči &mdash; zbog toga je broj već u okviru &mdash; a popis pokazuje kamo je otišao.</p>
+
+
+  <p class="note" data-en>Photos you have already filed are left alone, and so are ones you have thrown out with <kbd>X</kbd>. The number offered for a pile is the ordinary suggestion, at the same bar it uses everywhere else, and the misfile warning asks the same question before a pile is filed as it does before a burst. Photos that join no pile &mdash; no motorcycle in them, or too small or blurred to judge &mdash; are offered on their own at the end.</p>
+  <p class="note" data-hr>Fotografije koje ste već spremili ostaju netaknute, kao i one koje ste odbacili s <kbd>X</kbd>. Broj ponuđen za hrpu obična je preporuka, uz isti prag kao i svugdje drugdje, a upozorenje o krivom albumu postavlja isto pitanje prije spremanja hrpe kao i prije rafala. Fotografije koje ne uđu ni u jednu hrpu &mdash; nema motora na njima, ili je premalen ili previše mutan za procjenu &mdash; ponude se zasebno na kraju.</p>
+
   <h2 data-en>Two riders, one number</h2>
   <h2 data-hr>Dva vozača, isti broj</h2>
   <p class="lede" data-en>Type the number, then press <kbd>-</kbd>. The second rider gets <code>42 b</code>.</p>
@@ -278,6 +327,30 @@
 
   <p class="note" data-en>The folder is called <code>42 b</code> so it sits next to <code>42</code> in Explorer. Rename it to the rider's name whenever you like — the app picks the new name up the next time you open the job.</p>
   <p class="note" data-hr>Mapa se zove <code>42 b</code> pa u Exploreru stoji odmah do <code>42</code>. Preimenujte je u ime vozača kad god želite — program će novi naziv preuzeti sljedeći put kad otvorite posao.</p>
+
+  <h2 data-en>Clips</h2>
+  <h2 data-hr>Isječci</h2>
+  <p class="lede" data-en>Clips sit among the photos, in the order you shot them. <kbd>,</kbd> and <kbd>.</kbd> step through nine frames of one.</p>
+  <p class="lede" data-hr>Isječci stoje među fotografijama, redom kojim ste ih snimili. <kbd>,</kbd> i <kbd>.</kbd> idu kroz devet slika isječka.</p>
+
+  <figure class="shot">
+    <img src="img/clip.png" alt="" loading="lazy" decoding="async">
+    <figcaption data-en>A clip: how long it runs and which of the nine frames is showing. In the strip each clip carries its length. &nbsp;The photographs are left out of these pictures.</figcaption>
+    <figcaption data-hr>Isje&#269;ak: koliko traje i koja se od devet slika prikazuje. U traci svaki isje&#269;ak nosi svoju duljinu. &nbsp;Fotografije su na ovim slikama izostavljene.</figcaption>
+  </figure>
+
+  <p data-en>A clip is filed exactly as a photo is: type the number and press <kbd>Enter</kbd>, and the whole clip is copied into that rider&rsquo;s folder. <kbd>X</kbd> rejects it, <kbd>Mod</kbd>+<kbd>Z</kbd> undoes it. It shows a frame from the middle of itself, which is usually where the rider is.</p>
+  <p data-hr>Isječak se sprema jednako kao fotografija: upišite broj i pritisnite <kbd>Enter</kbd>, i cijeli se isječak kopira u mapu tog vozača. <kbd>X</kbd> ga odbacuje, <kbd>Mod</kbd>+<kbd>Z</kbd> poništava. Prikazuje sliku iz svoje sredine, gdje je vozač obično i vidljiv.</p>
+
+  <p data-en><strong>A clip does not play, and there is no sound.</strong> <kbd>.</kbd> moves to the next of nine frames spread across it and <kbd>,</kbd> back &mdash; the same nine whether the clip is four seconds or twenty, so any clip takes the same nine presses to look through. That is enough to see whose it is, which is what you are deciding.</p>
+  <p data-hr><strong>Isječak se ne reproducira i nema zvuka.</strong> <kbd>.</kbd> ide na sljedeću od devet slika raspoređenih po njemu, a <kbd>,</kbd> natrag &mdash; istih devet bilo da isječak traje četiri sekunde ili dvadeset, pa svaki zahtijeva jednako devet pritisaka. To je dovoljno da vidite čiji je, a to je ono o čemu odlučujete.</p>
+
+  <p data-en><strong>A clip is always on its own.</strong> It is never selected together with photos, so a burst you grab with <kbd>B</kbd> or <kbd>Shift</kbd>+<kbd>&rarr;</kbd> stops at it. That is deliberate: a clip is a different thing to give a rider than a photo, and it is large.</p>
+  <p data-hr><strong>Isječak je uvijek sam.</strong> Nikad se ne označava zajedno s fotografijama, pa se rafal koji uzmete s <kbd>B</kbd> ili <kbd>Shift</kbd>+<kbd>&rarr;</kbd> zaustavlja na njemu. To je namjerno: isječak je drugačija stvar za dati vozaču nego fotografija, i velik je.</p>
+
+  <p data-en>The app recognises the rider in a clip as it does in a photo, and looks at five frames across it rather than one, because a clip can start on empty track. Filing one takes a moment longer than a photo does &mdash; the file is a hundred times the size.</p>
+  <p data-hr>Program prepoznaje vozača u isječku kao i na fotografiji, i gleda pet slika po isječku umjesto jedne, jer isječak može početi na praznoj stazi. Spremanje traje malo dulje nego kod fotografije &mdash; datoteka je sto puta veća.</p>
+
 
   <h2 data-en>Finding one rider again</h2>
   <h2 data-hr>Ponovno pronaći jednog vozača</h2>
@@ -298,6 +371,12 @@
   <p class="lede" data-en>Press <kbd>A</kbd> to see every album &mdash; and the one you pick, whole, as a grid of its photos.</p>
   <p class="lede" data-hr>Pritisnite <kbd>A</kbd> da vidite sve albume &mdash; a onaj koji odaberete, cijeli, kao mrežu fotografija.</p>
 
+  <figure class="shot">
+    <img src="img/albums.png" alt="" loading="lazy" decoding="async">
+    <figcaption data-en>The album browser: albums down the left, the one you picked as a grid. &nbsp;The photographs are left out of these pictures.</figcaption>
+    <figcaption data-hr>Preglednik albuma: albumi lijevo, odabrani kao mre&#382;a. &nbsp;Fotografije su na ovim slikama izostavljene.</figcaption>
+  </figure>
+
   <p data-en>The albums are listed down the left in number order, each with its first photo and how many are in it. <kbd>PgUp</kbd> and <kbd>PgDn</kbd> go from one album to the next; the arrows move about the grid. <kbd>Space</kbd> opens a photo large and goes back again; while it is large, <kbd>&larr;</kbd> <kbd>&rarr;</kbd> go through the album. A number then <kbd>A</kbd> opens that album. <kbd>J</kbd> takes you to the photo among all the others in the sorting view, with the rest of its burst either side. <kbd>Esc</kbd>, or <kbd>A</kbd> again, takes you back to where you were.</p>
   <p data-hr>Albumi su popisani lijevo, po redu brojeva, svaki sa svojom prvom fotografijom i brojem fotografija u njemu. <kbd>PgUp</kbd> i <kbd>PgDn</kbd> idu s jednog albuma na sljedeći; strelice se kreću po mreži. <kbd>Space</kbd> otvara fotografiju uvećano i vraća natrag; dok je uvećana, <kbd>&larr;</kbd> <kbd>&rarr;</kbd> idu kroz album. Broj pa <kbd>A</kbd> otvara taj album. <kbd>J</kbd> vas vodi na tu fotografiju među svima ostalima u razvrstavanju, s ostatkom njezina rafala sa strane. <kbd>Esc</kbd>, ili ponovno <kbd>A</kbd>, vraća vas gdje ste bili.</p>
 
@@ -315,8 +394,12 @@
   <p class="lede" data-en>File someone once, and it offers their number every time they come past again.</p>
   <p class="lede" data-hr>Spremite vozača jednom i program nudi njegov broj svaki sljedeći put kad prođe.</p>
 
-  <p data-en>The app doesn't read the number painted on the bike — that stops working the moment a meeting paints its numbers differently. It recognises <strong>the motorcycle itself</strong>. So the first time a rider appears you type their number as usual; from then on, it knows them.</p>
-  <p data-hr>Program ne čita broj napisan na motoru — to prestaje raditi čim se na drugom događaju brojevi pišu drukčije. Prepoznaje <strong>sam motocikl</strong>. Prvi put kad se vozač pojavi upišete broj kao i inače; od tada ga program prepoznaje.</p>
+  <figure class="shot">
+    <img src="img/recognised.png" alt="" loading="lazy" decoding="async">
+    <figcaption data-en>The outline round the bike the number will go with, and the same bike magnified bottom left. &nbsp;The photographs are left out of these pictures.</figcaption>
+    <figcaption data-hr>Obrub oko motora uz koji ide broj, i isti motor uve&#269;an dolje lijevo. &nbsp;Fotografije su na ovim slikama izostavljene.</figcaption>
+  </figure>
+
 
   <div class="screen">
     <div class="dock">
@@ -388,8 +471,6 @@
   <div class="callout warn">
     <p data-en><strong>It says so before a photograph goes to the wrong rider.</strong> If what you typed does not match the bike on screen, the first <kbd>Enter</kbd> shows a line in amber instead of filing — either <em>this looks like 42 b, not 42</em>, or <em>these photos look unlike the ones already in 42</em>. Press <kbd>Enter</kbd> again to file anyway, or <kbd>Esc</kbd> to dismiss it and keep the number you typed. On a photograph holding more than one bike it adds <em>&uarr; for another bike</em>: often what looks wrong is that the outline is on the other rider.</p>
     <p data-hr><strong>Javlja se prije nego fotografija ode krivom vozaču.</strong> Ako upisano ne odgovara motoru na ekranu, prvi <kbd>Enter</kbd> umjesto spremanja prikaže žutu poruku — ili <em>ovo izgleda kao 42 b, a ne 42</em>, ili <em>ove fotografije ne sliče onima koje su već u 42</em>. Pritisnite <kbd>Enter</kbd> ponovno da ipak spremite, ili <kbd>Esc</kbd> da je odbacite i zadržite upisani broj. Na fotografiji s više motora dodaje <em>&uarr; za drugi motor</em>: često je ono što izgleda krivo zapravo obrub na drugom vozaču.</p>
-    <p data-en>It stays quiet unless it is fairly sure — surer than it needs to be to make a suggestion, so typing over a suggestion does not always bring a warning — and it says nothing about an album it has barely seen. Expect it about five times in a day's sorting; roughly nine in ten photographs typed into another rider's album are caught this way. <kbd>Shift</kbd>+<kbd>W</kbd> turns it off if you would rather work without it.</p>
-    <p data-hr>Šuti osim kad je prilično siguran — sigurniji nego što mora biti za prijedlog, pa upisivanje preko prijedloga ne donosi uvijek upozorenje — i ne govori ništa o albumu koji je jedva vidio. Očekujte ga otprilike pet puta u danu razvrstavanja; ovako se uhvati otprilike devet od deset fotografija upisanih u album drugog vozača. <kbd>Shift</kbd>+<kbd>W</kbd> ga isključuje ako radije radite bez njega.</p>
   </div>
 
   <p class="note" data-en>A suggestion can lag a second or two behind a fast pass — it looks at photographs ahead of your cursor while you work. It never holds you up; the photograph itself is always instant.</p>
@@ -413,6 +494,12 @@
   <h2 data-hr>Tipke</h2>
   <p class="lede" data-en>Digits, Enter, Backspace and Escape are fixed. Everything else can be changed.</p>
   <p class="lede" data-hr>Znamenke, Enter, Backspace i Esc su nepromjenjivi. Sve ostalo možete promijeniti.</p>
+
+  <figure class="shot">
+    <img src="img/keys.png" alt="" loading="lazy" decoding="async">
+    <figcaption data-en>The key list, shown by <kbd>F1</kbd>.</figcaption>
+    <figcaption data-hr>Popis tipki, koji prikazuje <kbd>F1</kbd>.</figcaption>
+  </figure>
 
   <div class="keys">
     <section>
@@ -496,6 +583,12 @@
       <div class="row"><span class="combo"><kbd>S</kbd></span>
         <span class="what" data-en>Switch between capture-time and filename order</span>
         <span class="what" data-hr>Prebaci redoslijed: po vremenu snimanja ili po nazivu datoteke</span></div>
+      <div class="row"><span class="combo"><kbd>.</kbd></span>
+        <span class="what" data-en>Next frame of a clip &mdash; nine spread across it</span>
+        <span class="what" data-hr>Sljedeća slika isječka &mdash; devet raspoređenih po njemu</span></div>
+      <div class="row"><span class="combo"><kbd>,</kbd></span>
+        <span class="what" data-en>Previous frame of a clip</span>
+        <span class="what" data-hr>Prethodna slika isječka</span></div>
       <div class="row"><span class="combo"><kbd>T</kbd></span>
         <span class="what" data-en>Show or hide the filmstrip</span><span class="what" data-hr>Prikaži ili sakrij traku sa sličicama</span></div>
       <div class="row"><span class="combo"><kbd>R</kbd></span>
@@ -553,6 +646,36 @@
     </section>
 
     <section>
+      <h3 data-en>Sorting the whole job</h3><h3 data-hr>Razvrstavanje cijelog posla</h3>
+      <div class="row"><span class="combo"><kbd>Shift</kbd>+<kbd>G</kbd></span>
+        <span class="what" data-en>Gather everything undecided into piles to name</span>
+        <span class="what" data-hr>Skupi sve neodlučeno u hrpe za imenovanje</span></div>
+      <div class="row"><span class="combo"><kbd>&larr;</kbd><kbd>&rarr;</kbd><kbd>&uarr;</kbd><kbd>&darr;</kbd></span>
+        <span class="what" data-en>Move about the pile &mdash; <kbd>Shift</kbd> with them to select several</span>
+        <span class="what" data-hr>Kretanje po hrpi &mdash; uz <kbd>Shift</kbd> označavate više njih</span></div>
+      <div class="row"><span class="combo"><kbd>Home</kbd><kbd>End</kbd></span>
+        <span class="what" data-en>First or last photo of the pile</span><span class="what" data-hr>Prva ili zadnja fotografija hrpe</span></div>
+      <div class="row"><span class="combo"><kbd>Space</kbd></span>
+        <span class="what" data-en>Open the photo large to read the number, or back to the pile &mdash; there, <kbd>&uarr;</kbd> <kbd>&darr;</kbd> move the outline to another bike</span>
+        <span class="what" data-hr>Otvori fotografiju uvećano da pročitaš broj, ili natrag na hrpu &mdash; tamo <kbd>&uarr;</kbd> <kbd>&darr;</kbd> premještaju obrub na drugi motor</span></div>
+      <div class="row"><span class="combo"><kbd>Enter</kbd></span>
+        <span class="what" data-en>File the whole pile into the number in the box</span>
+        <span class="what" data-hr>Spremi cijelu hrpu u broj iz okvira</span></div>
+      <div class="row"><span class="combo"><kbd>X</kbd></span>
+        <span class="what" data-en>Take the selected photos out of the pile &mdash; again to put them back</span>
+        <span class="what" data-hr>Izvadi označene fotografije iz hrpe &mdash; ponovno da ih vratiš</span></div>
+      <div class="row"><span class="combo"><kbd>PgUp</kbd><kbd>PgDn</kbd></span>
+        <span class="what" data-en>Previous or next pile &mdash; or click one in the list</span>
+        <span class="what" data-hr>Prethodna ili sljedeća hrpa &mdash; ili kliknite jednu na popisu</span></div>
+      <div class="row"><span class="combo"><kbd>Tab</kbd></span>
+        <span class="what" data-en>Pass over this pile &mdash; it stays on the list to come back to</span>
+        <span class="what" data-hr>Preskoči ovu hrpu &mdash; ostaje na popisu da joj se vratite</span></div>
+      <div class="row"><span class="combo"><kbd>Esc</kbd></span>
+        <span class="what" data-en>End the pass &mdash; everything already named stays filed</span>
+        <span class="what" data-hr>Prekini prolaz &mdash; sve već imenovano ostaje spremljeno</span></div>
+    </section>
+
+    <section>
       <h3 data-en>Your projects</h3><h3 data-hr>Vaši projekti</h3>
       <div class="row"><span class="combo"><kbd>&uarr;</kbd><kbd>&darr;</kbd></span>
         <span class="what" data-en>Choose a project</span><span class="what" data-hr>Odaberi projekt</span></div>
@@ -582,36 +705,39 @@
   <p class="lede" data-en>Small, marked copies to send out — then the originals for whatever they pick.</p>
   <p class="lede" data-hr>Male, označene kopije za slanje — pa originali za ono što odaberu.</p>
 
+  <figure class="shot">
+    <img src="img/previews.png" alt="" loading="lazy" decoding="async">
+    <figcaption data-en>Choosing where the previews go, and gathering what a customer picked.</figcaption>
+    <figcaption data-hr>Odabir mjesta za pregledne slike i prikupljanje onoga &#353;to je kupac odabrao.</figcaption>
+  </figure>
+
   <p data-en><kbd>Mod</kbd>+<kbd>E</kbd> makes a watermarked, numbered copy of every filed photograph, into a folder you choose. Send that folder to the customer. When they reply with numbers — <span style="font-family:var(--mono);font-size:14px">3, 7, 12</span> or <span style="font-family:var(--mono);font-size:14px">3-9</span> — type the album and their numbers into <em>A customer has picked some out</em>, and the full-resolution originals are gathered into one folder, ready to deliver.</p>
   <p data-hr><kbd>Mod</kbd>+<kbd>E</kbd> radi kopiju svake spremljene fotografije s vodenim žigom i brojem, u mapu koju odaberete. Tu mapu pošaljete kupcu. Kad odgovori brojevima — <span style="font-family:var(--mono);font-size:14px">3, 7, 12</span> ili <span style="font-family:var(--mono);font-size:14px">3-9</span> — upišete album i njegove brojeve u polje <em>Kupac je odabrao fotografije</em>, i originali u punoj rezoluciji skupe se u jednu mapu, spremni za isporuku.</p>
+
+  <p data-en><strong>A clip gets a preview too</strong> — a small, silent, marked copy with the same number burnt into it, sharing one run of numbers with the photos, so a customer picks number 47 without caring which it is. These are made one second per second of clip, so an album with a dozen in it takes a couple of minutes rather than a moment; the screen says how long before it starts, and <em>Stop</em> works throughout.</p>
+  <p data-hr><strong>I isječak dobiva pregled</strong> — malu, nijemu, označenu kopiju s istim brojem upisanim u nju, u istom nizu brojeva kao fotografije, pa kupac odabere broj 47 bez razmišljanja o čemu se radi. Izrađuju se sekundu po sekundi isječka, pa album s desetak njih traje nekoliko minuta, a ne trenutak; prije početka piše koliko će trajati, a <em>Stop</em> radi cijelo vrijeme.</p>
 
   <p class="note" data-en>Previews can't be written into your photos folder or your albums folder — the app refuses both. Running it again is safe: anything already made is left alone.</p>
   <p class="note" data-hr>Pregledne slike ne mogu se spremiti u vašu mapu s fotografijama ni u mapu s albumima — program to odbija. Ponovno pokretanje je sigurno: ono što je već napravljeno ostaje netaknuto.</p>
 
   <h2 data-en>Worth knowing</h2>
   <h2 data-hr>Dobro je znati</h2>
-  <p class="lede" data-en>Where it is honest about its limits.</p>
-  <p class="lede" data-hr>Gdje su mu granice.</p>
+  <p class="lede" data-en>Five things that will save you a puzzled minute.</p>
+  <p class="lede" data-hr>Pet stvari koje &#263;e vam u&#353;tedjeti minutu &#269;u&#273;enja.</p>
 
   <ul class="plain" data-en>
-    <li><strong>Undo is safe.</strong> It deletes only files the app copied itself, and only in the albums folder you have open. A photograph you put in an album by hand is never touched &mdash; nor is the original albums folder when you open a copy of it.</li>
-    <li><strong>Rider recognition has only ever seen one event.</strong> Everything it has been measured on — riders it was never trained on, and a whole meeting filed in the order it was shot — comes from one circuit over two days. A different organiser is untested.</li>
-    <li><strong>A suggestion is right about 19 times in 20.</strong> For a rider it has already seen it offers one on about nine passes in ten, measured on one meeting of 132 riders. So now and then it names the wrong rider — read the number before you press <kbd>Enter</kbd> on an empty box. On a rider's first pass there is nothing to know them by, so anything it offers then is someone else. When it stays quiet, that is not a fault.</li>
-    <li><strong>The misfile warning, and the marks in the album browser, have never been used in anger.</strong> Their thresholds were measured, not guessed — by filing a whole meeting in the order it was shot — but nobody has yet sorted or checked a real day's work with them switched on. If they get in the way more than they help, <kbd>Shift</kbd>+<kbd>W</kbd> and tell me.</li>
-    <li><strong>Switching to another bike is unmeasured.</strong> Recognition learned from the sharpest bike in each photograph. How well it knows a blurred bike in the background has not been measured, so after switching, read the number yourself. And it can only switch to a bike it found on its own: in about half the photographs with two riders close together it didn't, and <kbd>&uarr;</kbd> has nothing to move to. Now and then <kbd>&uarr;</kbd> lands on the same bike with a bigger outline — press it again.</li>
-    <li><strong>There is no zoom.</strong> This is a sorting tool, not a culling tool — which is exactly why every photograph appears instantly.</li>
-    <li><strong>RAW files are unverified.</strong> The code handles them, but no real RAW file has been through it yet. Check the first album carefully if you sort a RAW job.</li>
-    <li><strong>Installers are unsigned</strong>, so Windows and macOS each warn once on first launch.</li>
+    <li><strong>Undo is safe.</strong> It deletes only files the app copied itself, and only in the albums folder you have open. A photo you put in an album by hand is never touched.</li>
+    <li><strong>Read the number before you press <kbd>Enter</kbd> on an empty box.</strong> A suggestion is usually right, but not always &mdash; and on a rider&rsquo;s first pass anything it offers is someone else.</li>
+    <li><strong>There is no zoom.</strong> This is a tool for deciding whose photo it is, not for judging whether it is sharp &mdash; which is why every photo appears instantly.</li>
+    <li><strong>Clips and RAW files are newer than the rest.</strong> Both work, neither has sorted a real day&rsquo;s work yet, so check the first album of either.</li>
+    <li><strong>Your computer will warn you once</strong> the first time you open the app, because it is not code-signed yet. After that, never again.</li>
   </ul>
   <ul class="plain" data-hr>
-    <li><strong>Poništavanje je sigurno.</strong> Briše samo datoteke koje je program sam kopirao, i to samo u mapi s albumima koju imate otvorenu. Fotografija koju ste ručno stavili u album nikad se ne dira &mdash; kao ni izvorna mapa s albumima kad otvorite njezinu kopiju.</li>
-    <li><strong>Prepoznavanje vozača vidjelo je samo jedan događaj.</strong> Sve na čemu je izmjereno — vozači na kojima nije učen, i cijeli događaj razvrstan redom kojim je sniman — dolazi s jedne staze kroz dva dana. Drugi organizator nije isproban.</li>
-    <li><strong>Prijedlog je točan otprilike 19 puta od 20.</strong> Za vozača kojeg je već vidio javi se na otprilike devet od deset prolazaka, mjereno na jednom događaju sa 132 vozača. Zato ponekad imenuje krivog vozača — pročitajte broj prije nego pritisnete <kbd>Enter</kbd> na praznom okviru. Pri prvom prolasku vozača nema ga po čemu prepoznati, pa je sve što tada ponudi netko drugi. Kad šuti, to nije greška.</li>
-    <li><strong>Upozorenje o krivom albumu i oznake u pregledniku albuma još nisu korišteni u praksi.</strong> Pragovi su izmjereni, ne pogođeni napamet — razvrstavanjem cijelog događaja redom kojim je sniman — ali nitko još nije razvrstao ni provjerio pravi radni dan s njima uključenima. Ako više smetaju nego pomažu, <kbd>Shift</kbd>+<kbd>W</kbd> i javite mi.</li>
-    <li><strong>Prebacivanje na drugi motor nije izmjereno.</strong> Prepoznavanje je učeno na najoštrijem motoru na svakoj fotografiji. Koliko dobro prepoznaje zamućeni motor u pozadini nije izmjereno, pa nakon prebacivanja sami pročitajte broj. I može prebaciti samo na motor koji je pronašao zasebno: na otprilike polovici fotografija s dva vozača blizu jedan drugome nije ga pronašao, pa <kbd>&uarr;</kbd> nema kamo prijeći. Ponekad <kbd>&uarr;</kbd> stane na isti motor s većim obrubom — pritisnite ga ponovno.</li>
-    <li><strong>Nema povećavanja.</strong> Ovo je alat za razvrstavanje, ne za probir — upravo zato se svaka fotografija prikazuje odmah.</li>
-    <li><strong>RAW datoteke nisu provjerene.</strong> Program ih obrađuje, ali kroz njega još nije prošla prava RAW datoteka. Pažljivo provjerite prvi album ako razvrstavate RAW posao.</li>
-    <li><strong>Instalacijske datoteke nisu potpisane</strong>, pa Windows i macOS jednom upozore pri prvom pokretanju.</li>
+    <li><strong>Poni&#353;tavanje je sigurno.</strong> Bri&#353;e samo datoteke koje je program sam kopirao, i to samo u mapi s albumima koju imate otvorenu. Fotografija koju ste ru&#269;no stavili u album nikad se ne dira.</li>
+    <li><strong>Pro&#269;itajte broj prije nego pritisnete <kbd>Enter</kbd> na praznom okviru.</strong> Prijedlog je obi&#269;no to&#269;an, ali ne uvijek &mdash; a pri prvom prolasku vozača sve &#353;to ponudi je netko drugi.</li>
+    <li><strong>Nema pove&#263;avanja.</strong> Ovo je alat za odlu&#269;ivanje &#269;ija je fotografija, ne za procjenu o&#353;trine &mdash; upravo zato se svaka prikazuje odmah.</li>
+    <li><strong>Isje&#269;ci i RAW datoteke noviji su od ostaloga.</strong> Oboje radi, ali nijedno jo&#353; nije razvrstalo pravi radni dan, pa provjerite prvi album.</li>
+    <li><strong>Ra&#269;unalo &#263;e vas jednom upozoriti</strong> pri prvom otvaranju programa, jer jo&#353; nije digitalno potpisan. Nakon toga vi&#353;e nikad.</li>
   </ul>
 
   <footer class="end">
