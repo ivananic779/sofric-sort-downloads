@@ -20,10 +20,33 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="How to sort a day of motorsport photographs with Sofric Sort. Upute za korištenje programa Sofric Sort.">
 <title>Sofric Sort — Handbook / Upute</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap">
 <style>
+  /*
+   * The two faces, from beside this page rather than from a font host. One fewer third
+   * party in a client's browser, nothing to render in Times where Google is blocked,
+   * and a page saved to disk still looks like itself. They are the same files the
+   * installer carries; fonts/OFL-*.txt is the notice that travels with them.
+   *
+   * Variable, so `.pill-num` finally gets the 600 it has always asked for - the static
+   * weights this page used to fetch did not include it, and the browser was rounding
+   * or faking it.
+   */
+  @font-face {
+    font-family: 'Archivo';
+    src: url('fonts/Archivo-var.woff2') format('woff2-variations');
+    font-weight: 100 900; font-style: normal; font-display: swap;
+  }
+  @font-face {
+    font-family: 'Archivo';
+    src: url('fonts/Archivo-italic-var.woff2') format('woff2-variations');
+    font-weight: 100 900; font-style: italic; font-display: swap;
+  }
+  @font-face {
+    font-family: 'JetBrains Mono';
+    src: url('fonts/JetBrainsMono-var.woff2') format('woff2-variations');
+    font-weight: 100 800; font-style: normal; font-display: swap;
+  }
+
   :root {
     --ground: #faf9f8;
     --raised: #ffffff;
@@ -32,12 +55,26 @@
     --line-soft: #ebe9e6;
     --text: #191a1d;
     --text-dim: #5f6169;
-    --text-faint: #8b8d95;
+    --text-faint: #6a6c75;
     --accent: #1f6fd0;
     --filed: #2e8f4e;
     --guess: #a8720d;
     --reject: #c2482a;
     --shadow: 0 1px 2px rgba(20, 22, 28, .06), 0 8px 24px rgba(20, 22, 28, .05);
+    /*
+     * The application's own colours, for the pictures of it drawn below. They are the
+     * same in both themes because the application is: it is dark because it sits behind
+     * photographs, and a mock-up of it that went white in daylight would be a mock-up of
+     * something else.
+     */
+    --app-stage: #0b0b0d;
+    --app-line: #2f303a;
+    --app-line-loud: #55565f;
+    --app-dim: #a0a4b0;
+    --app-on-photo: #f3f4f7;
+    --app-glass: rgba(12, 12, 15, .55);
+    --app-pip-off: #3a3b46;
+    --app-filed: #46c46d;
     --display: 'Archivo', system-ui, -apple-system, 'Segoe UI', sans-serif;
     --mono: 'JetBrains Mono', ui-monospace, Consolas, monospace;
     color-scheme: light;
@@ -46,7 +83,7 @@
     :root:not([data-theme="light"]) {
       --ground: #101014; --raised: #17181d; --sunken: #0b0b0e;
       --line: #2b2c33; --line-soft: #212228;
-      --text: #e9e9ec; --text-dim: #9a9ca6; --text-faint: #6b6d77;
+      --text: #e9e9ec; --text-dim: #9a9ca6; --text-faint: #878b98;
       --accent: #5aa2ff; --filed: #46c46d; --guess: #e8b04a; --reject: #e0603f;
       --shadow: 0 1px 2px rgba(0,0,0,.5), 0 10px 30px rgba(0,0,0,.35);
       color-scheme: dark;
@@ -55,7 +92,7 @@
   :root[data-theme="dark"] {
     --ground: #101014; --raised: #17181d; --sunken: #0b0b0e;
     --line: #2b2c33; --line-soft: #212228;
-    --text: #e9e9ec; --text-dim: #9a9ca6; --text-faint: #6b6d77;
+    --text: #e9e9ec; --text-dim: #9a9ca6; --text-faint: #878b98;
     --accent: #5aa2ff; --filed: #46c46d; --guess: #e8b04a; --reject: #e0603f;
     --shadow: 0 1px 2px rgba(0,0,0,.5), 0 10px 30px rgba(0,0,0,.35);
     color-scheme: dark;
@@ -127,25 +164,36 @@
     border-radius: 12px; padding: 30px 20px; display: flex; flex-wrap: wrap;
     gap: 26px; justify-content: center;
   }
+  /*
+   * The number box, drawn rather than photographed, so it can be read at any size and
+   * in either theme. Its colours are the APPLICATION's and are named --app-* for that
+   * reason: they do not answer to this page's light and dark, because what they are
+   * imitating does not. Taken from src/renderer/src/styles.css; if that moves, these
+   * move, or the handbook illustrates an application that no longer exists.
+   */
   .pill {
     display: flex; align-items: center; gap: 16px; padding: 15px 26px;
-    background: #0b0b0d; border: 1px solid #2a2a30; border-radius: 12px; min-width: 0;
+    background: var(--app-stage); border: 1px solid var(--app-line);
+    border-radius: 16px; min-width: 0;
   }
-  .pill.suggested { border-style: dashed; border-color: #4a4a52; }
+  .pill.suggested { border-style: dashed; border-color: var(--app-line-loud); }
   .dock { display: flex; align-items: center; gap: 10px; min-width: 0; }
   .crop {
-    width: 92px; height: 70px; flex: none; border: 1px solid #2a2a30; border-radius: 6px;
+    width: 92px; height: 70px; flex: none; border: 1px solid var(--app-line); border-radius: 6px;
+    /* Not a colour of the application's: it stands in for a photograph. */
     background: linear-gradient(135deg, #3a3f4a 0%, #232830 55%, #1b1f26 100%);
     display: grid; place-items: center;
   }
-  .crop span { font: 700 20px/1 var(--mono); color: #cfd3da; background: #0006; padding: 2px 7px; border-radius: 4px; }
-  .pill-num { font: 600 40px/1 var(--mono); letter-spacing: .04em; color: #fff; }
-  .pill.suggested .pill-num { color: #8a8a93; }
-  .pill-info { font: 400 11px/1.4 var(--mono); color: #8a8a93; margin-top: 7px; display: flex; gap: 7px; align-items: center; flex-wrap: wrap; }
+  .crop span { font: 700 20px/1 var(--mono); color: var(--app-on-photo); background: var(--app-glass); padding: 2px 7px; border-radius: 4px; }
+  /* 700 against a suggestion's 500: the application tells his own digits from the ones
+     it offered by weight as well as by colour, and so does this. */
+  .pill-num { font: 700 40px/1 var(--mono); letter-spacing: .04em; color: #fff; }
+  .pill.suggested .pill-num { font-weight: 500; color: var(--app-dim); }
+  .pill-info { font: 400 11px/1.4 var(--mono); color: var(--app-dim); margin-top: 7px; display: flex; gap: 7px; align-items: center; flex-wrap: wrap; }
   .pips { display: inline-flex; gap: 4px; align-items: center; }
-  .pips i { width: 6px; height: 6px; border-radius: 50%; background: #3a3a42; display: block; }
-  .pips i.on { background: #43c46a; }
-  .pips b { font-weight: 500; margin-left: 3px; color: #43c46a; }
+  .pips i { width: 6px; height: 6px; border-radius: 50%; background: var(--app-pip-off); display: block; }
+  .pips i.on { background: var(--app-filed); }
+  .pips b { font-weight: 500; margin-left: 3px; color: var(--app-filed); }
   .caption { font: 400 12px/1.5 var(--mono); color: var(--text-faint); text-align: center; width: 100%; margin: 0; }
 
   .states { display: grid; margin: 22px 0 0; }
@@ -203,7 +251,17 @@
     .pill { padding: 13px 18px; gap: 12px; }
     .pill-num { font-size: 32px; }
   }
-  @media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; } }
+  /* `.01ms`, not `none`: `none` cancels a `both` fill and would strand an animated
+     element at its from-state - invisible to exactly the reader who asked for less
+     motion. And ::before/::after, which a bare * misses. */
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: .01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: .01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
 </style>
 </head>
 <body>

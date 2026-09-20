@@ -7,15 +7,80 @@
     <meta name="description" content="Sort motorsport event photos into per-driver albums." />
     <link rel="icon" href="./icon.png" />
     <style>
-      :root {
-        --bg: #121214;
-        --panel: #1a1a1e;
-        --line: #2a2a30;
-        --text: #e8e8ea;
-        --dim: #9a9aa3;
-        --faint: #6a6a73;
-        --accent: #4a9eff;
+      /*
+       * The two faces the application is set in, served from beside this page rather
+       * than from a font host: one fewer third party in a client's browser, no flash of
+       * another typeface, and a page saved to disk still looks like itself. They are the
+       * same files the installer carries; tools/subset-fonts.py says how they were cut,
+       * and fonts/OFL-*.txt is the notice that travels with them.
+       *
+       * `swap` here, unlike in the application, because this one comes over a network.
+       */
+      @font-face {
+        font-family: 'Archivo';
+        src: url('fonts/Archivo-var.woff2') format('woff2-variations');
+        font-weight: 100 900;
+        font-style: normal;
+        font-display: swap;
       }
+      @font-face {
+        font-family: 'Archivo';
+        src: url('fonts/Archivo-italic-var.woff2') format('woff2-variations');
+        font-weight: 100 900;
+        font-style: italic;
+        font-display: swap;
+      }
+      @font-face {
+        font-family: 'JetBrains Mono';
+        src: url('fonts/JetBrainsMono-var.woff2') format('woff2-variations');
+        font-weight: 100 800;
+        font-style: normal;
+        font-display: swap;
+      }
+
+      /*
+       * Light by default with a dark answer, as the handbook is, and for the same
+       * reason: this is read in daylight, on a phone, by someone who has not seen the
+       * application yet. The application is the only dark-only surface here, and it is
+       * dark because it sits behind photographs.
+       *
+       * The names are the handbook's so the two public pages can be read together.
+       */
+      :root {
+        --ground: #faf9f8;
+        --raised: #ffffff;
+        --sunken: #f1f0ee;
+        --line: #dedcd8;
+        --line-soft: #ebe9e6;
+        --text: #191a1d;
+        --text-dim: #5f6169;
+        /* 4.97:1 on the ground. It was #6a6a73 on a dark one, which was 3.49 - below
+           every legibility bar there is, and this page is the first thing anyone sees. */
+        --text-faint: #6a6c75;
+        --accent: #1f6fd0;
+        --on-accent: #ffffff;
+        --shadow: 0 1px 2px rgba(20, 22, 28, 0.06), 0 8px 24px rgba(20, 22, 28, 0.05);
+        --display: 'Archivo', system-ui, -apple-system, 'Segoe UI', sans-serif;
+        --mono: 'JetBrains Mono', ui-monospace, Consolas, monospace;
+        color-scheme: light;
+      }
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --ground: #101014;
+          --raised: #17181d;
+          --sunken: #0b0b0e;
+          --line: #2b2c33;
+          --line-soft: #212228;
+          --text: #e9e9ec;
+          --text-dim: #9a9ca6;
+          --text-faint: #878b98;
+          --accent: #5aa2ff;
+          --on-accent: #06121f;
+          --shadow: 0 1px 2px rgba(0, 0, 0, 0.5), 0 10px 30px rgba(0, 0, 0, 0.35);
+          color-scheme: dark;
+        }
+      }
+
       * { box-sizing: border-box; }
       body {
         margin: 0;
@@ -23,60 +88,74 @@
         display: grid;
         place-items: center;
         padding: 32px 20px 64px;
-        background: var(--bg);
+        background: var(--ground);
         color: var(--text);
-        font: 16px/1.6 system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+        font: 400 16px/1.62 var(--display);
+        font-variant-numeric: tabular-nums;
+        -webkit-font-smoothing: antialiased;
       }
       main { width: min(560px, 100%); text-align: center; }
       img.icon { width: 96px; height: 96px; border-radius: 21px; }
-      h1 { margin: 20px 0 6px; font-size: 30px; letter-spacing: -0.02em; }
-      .tagline { margin: 0 0 36px; color: var(--dim); }
+      h1 { margin: 20px 0 6px; font-size: 34px; font-weight: 700; letter-spacing: -0.032em; }
+      .tagline { margin: 0 0 36px; color: var(--text-dim); }
 
       .btn {
         display: block;
         padding: 16px 24px;
-        border-radius: 10px;
+        border-radius: 12px;
         background: var(--accent);
-        color: #06121f;
+        color: var(--on-accent);
         font-size: 17px;
         font-weight: 600;
         text-decoration: none;
+        box-shadow: var(--shadow);
       }
-      .btn:hover { background: #63acff; }
-      .btn .size { display: block; font-size: 13px; font-weight: 400; opacity: 0.75; }
+      .btn:hover { filter: brightness(1.08); }
+      .btn .size { display: block; font-size: 13px; font-weight: 400; opacity: 0.8; }
 
-      .other { margin: 14px 0 0; font-size: 14px; color: var(--dim); }
+      .other { margin: 14px 0 0; font-size: 14px; color: var(--text-dim); }
       .other a { color: var(--accent); }
 
       .card {
         margin-top: 34px;
         padding: 20px 22px;
-        background: var(--panel);
+        background: var(--raised);
         border: 1px solid var(--line);
-        border-radius: 10px;
+        border-radius: 12px;
+        box-shadow: var(--shadow);
         text-align: left;
       }
       .card h2 {
         margin: 0 0 10px;
-        font-size: 13px;
+        font: 700 12px/1.3 var(--mono);
         text-transform: uppercase;
-        letter-spacing: 0.08em;
-        color: var(--faint);
+        letter-spacing: 0.14em;
+        color: var(--accent);
       }
-      .card p { margin: 0 0 10px; font-size: 15px; color: var(--dim); }
+      .card p { margin: 0 0 10px; font-size: 15px; color: var(--text-dim); }
       .card p:last-child { margin-bottom: 0; }
-      .card strong { color: var(--text); }
+      .card strong { color: var(--text); font-weight: 600; }
       code {
         display: inline-block;
         padding: 2px 7px;
-        background: #0d0d10;
-        border: 1px solid var(--line);
+        background: var(--sunken);
+        border: 1px solid var(--line-soft);
         border-radius: 5px;
-        font: 13px ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
-        color: #cfcfd6;
+        font: 500 13px var(--mono);
+        color: var(--text);
       }
-      footer { margin-top: 30px; font-size: 13px; color: var(--faint); }
+      footer { margin-top: 30px; font-size: 13px; color: var(--text-faint); }
       [hidden] { display: none !important; }
+
+      /* Nothing on this page animates; this is here so that stays true if anything is
+         added. `.01ms` rather than `none`, which would strand a filled keyframe. */
+      @media (prefers-reduced-motion: reduce) {
+        *, *::before, *::after {
+          animation-duration: 0.01ms !important;
+          animation-iteration-count: 1 !important;
+          transition-duration: 0.01ms !important;
+        }
+      }
     </style>
   </head>
   <body>
