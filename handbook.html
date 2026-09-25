@@ -75,6 +75,7 @@
     --app-glass: rgba(12, 12, 15, .55);
     --app-pip-off: #3a3b46;
     --app-filed: #46c46d;
+    --app-accent: #5aa2ff;
     --display: 'Archivo', system-ui, -apple-system, 'Segoe UI', sans-serif;
     --mono: 'JetBrains Mono', ui-monospace, Consolas, monospace;
     color-scheme: light;
@@ -165,8 +166,8 @@
     gap: 26px; justify-content: center;
   }
   /*
-   * The number box, drawn rather than photographed, so it can be read at any size and
-   * in either theme. Its colours are the APPLICATION's and are named --app-* for that
+   * The number box and the album window, drawn rather than photographed, so they can be read at any size and
+   * in either theme. Their colours are the APPLICATION's and are named --app-* for that
    * reason: they do not answer to this page's light and dark, because what they are
    * imitating does not. Taken from src/renderer/src/styles.css; if that moves, these
    * move, or the handbook illustrates an application that no longer exists.
@@ -190,6 +191,11 @@
   .pill-num { font: 700 40px/1 var(--mono); letter-spacing: .04em; color: #fff; }
   .pill.suggested .pill-num { font-weight: 500; color: var(--app-dim); }
   .pill-info { font: 400 11px/1.4 var(--mono); color: var(--app-dim); margin-top: 7px; display: flex; gap: 7px; align-items: center; flex-wrap: wrap; }
+  /* The album window, as J opens it: a title saying what Enter will do, and what is typed
+     with the caret after it. Solid, where the suggestion's border is dashed. */
+  .pill.window { border-color: var(--app-line-loud); }
+  .pill-title { font-size: 11px; line-height: 1.4; color: var(--app-dim); margin-bottom: 7px; }
+  .pill-num .caret { display: inline-block; width: 3px; height: .85em; margin-left: 4px; vertical-align: -.06em; background: var(--app-accent); }
   .pips { display: inline-flex; gap: 4px; align-items: center; }
   .pips i { width: 6px; height: 6px; border-radius: 50%; background: var(--app-pip-off); display: block; }
   .pips i.on { background: var(--app-filed); }
@@ -281,8 +287,8 @@
 
   <h2 data-en>The loop</h2>
   <h2 data-hr>Tijek rada</h2>
-  <p class="lede" data-en>Look, type, Enter. Everything else is there to keep that going.</p>
-  <p class="lede" data-hr>Pogledaj, upiši, Enter. Sve ostalo postoji da to ne prekida.</p>
+  <p class="lede" data-en>Look, J, type, Enter. Everything else is there to keep that going.</p>
+  <p class="lede" data-hr>Pogledaj, J, upiši, Enter. Sve ostalo postoji da to ne prekida.</p>
 
   <figure class="shot">
     <img src="img/sorting.png" alt="" loading="lazy" decoding="async">
@@ -305,10 +311,10 @@
     <li>
       <span class="step">02</span>
       <div>
-        <h3 data-en>Type the number</h3>
-        <h3 data-hr>Upišite broj</h3>
-        <p data-en>Just the digits. There is no field to click into and no mode to be in: digits always mean a rider's number, wherever you are.</p>
-        <p data-hr>Samo znamenke. Nema polja u koje treba kliknuti ni načina rada u kojem se treba nalaziti: znamenke uvijek znače broj vozača, gdje god se nalazili.</p>
+        <h3 data-en>Press J, and type the number</h3>
+        <h3 data-hr>Pritisnite J i upišite broj</h3>
+        <p data-en><kbd>J</kbd> opens the album window at the foot of the photo. If the app knows the rider, it opens holding their number, highlighted &mdash; typing anything replaces it. Type the album's name: its digits, and its letters if it has them. The albums already filed that start with what you type are listed under it, and <kbd>Tab</kbd> fills in the first. <kbd>Esc</kbd> closes the window without doing anything.</p>
+        <p data-hr><kbd>J</kbd> otvara prozor za album pri dnu fotografije. Ako program prepoznaje vozača, otvara se s njegovim brojem, označenim &mdash; bilo što upisano ga zamjenjuje. Upišite naziv albuma: njegove znamenke, i slova ako ih ima. Ispod se nabrajaju već spremljeni albumi koji počinju onim što upisujete, a <kbd>Tab</kbd> upisuje prvi. <kbd>Esc</kbd> zatvara prozor bez ikakve radnje.</p>
       </div>
     </li>
     <li>
@@ -316,27 +322,27 @@
       <div>
         <h3 data-en>Enter files the run</h3>
         <h3 data-hr>Enter sprema niz</h3>
-        <p data-en>Every frame is copied into that rider's album, and the cursor lands on the next burst, already selected. Type the next number.</p>
-        <p data-hr>Sve slike kopiraju se u album tog vozača, a pokazivač staje na sljedeći rafal, već označen. Upišite sljedeći broj.</p>
+        <p data-en>Every frame is copied into that rider's album, the window closes, and the cursor lands on the next burst, already selected. <kbd>J</kbd> again for the next. With no window open, <kbd>Enter</kbd> files nothing at all &mdash; not even a suggestion &mdash; and a digit or <kbd>Enter</kbd> pressed out of habit only says which key opens the window.</p>
+        <p data-hr>Sve slike kopiraju se u album tog vozača, prozor se zatvara, a pokazivač staje na sljedeći rafal, već označen. Za sljedeći opet <kbd>J</kbd>. Bez otvorenog prozora <kbd>Enter</kbd> ne sprema ništa &mdash; ni prijedlog &mdash; a znamenka ili <kbd>Enter</kbd> pritisnuti iz navike samo kažu koja tipka otvara prozor.</p>
       </div>
     </li>
   </ol>
 
   <figure class="shot">
     <img src="img/typing.png" alt="" loading="lazy" decoding="async">
-    <figcaption data-en>A burst selected and a number typed. Enter files the whole run. &nbsp;The photographs are left out of these pictures.</figcaption>
-    <figcaption data-hr>Ozna&#269;en rafal i upisan broj. Enter sprema cijeli niz. &nbsp;Fotografije su na ovim slikama izostavljene.</figcaption>
+    <figcaption data-en>A burst selected, and 42 typed in the album window. Enter files the whole run. &nbsp;The photographs are left out of these pictures.</figcaption>
+    <figcaption data-hr>Ozna&#269;en rafal i 42 upisano u prozor za album. Enter sprema cijeli niz. &nbsp;Fotografije su na ovim slikama izostavljene.</figcaption>
   </figure>
   <div class="callout">
-    <p data-en><strong>Your photographs are only ever read &mdash; unless you press <kbd>L</kbd>.</strong> Sorting copies files out; nothing in the source folder is moved, renamed or altered. The one exception is <kbd>L</kbd>, which files the photo and then deletes the original from the photos folder. It is the only key that does, you have to press it, and <kbd>Mod</kbd>+<kbd>Z</kbd> puts the photo back. <kbd>Enter</kbd> and <kbd>J</kbd> never touch your originals. One photograph can go to several riders — file it again with a different number, pressing <kbd>&uarr;</kbd> first to outline the other rider's bike. A photograph you have moved cannot go to a second rider, because it is no longer there to file.</p>
-    <p data-hr><strong>Vaše fotografije se samo čitaju &mdash; osim ako pritisnete <kbd>L</kbd>.</strong> Razvrstavanje kopira datoteke; ništa se u izvornoj mapi ne premješta, ne preimenuje niti mijenja. Jedina je iznimka <kbd>L</kbd>, koja fotografiju spremi pa izvornik obriše iz mape s fotografijama. To je jedina takva tipka, morate je pritisnuti, a <kbd>Mod</kbd>+<kbd>Z</kbd> fotografiju vraća. <kbd>Enter</kbd> i <kbd>J</kbd> vaše izvornike nikad ne diraju. Jedna fotografija može ići kod više vozača — spremite je ponovno s drugim brojem, a prije toga tipkom <kbd>&uarr;</kbd> obrubite motor drugog vozača. Premještena fotografija ne može ići kod drugog vozača jer je ondje više nema.</p>
+    <p data-en><strong>Your photographs are only ever read &mdash; unless you press <kbd>L</kbd> or <kbd>Backspace</kbd>.</strong> Sorting copies files out; nothing in the source folder is moved, renamed or altered. There are two exceptions, and you have to press them. <kbd>L</kbd> files the photo and then deletes the original from the photos folder. <kbd>Backspace</kbd> deletes the photo under the cursor from the job: its files are moved into a folder called <em>Deleted by Sofric Sort</em> at the top of your photos folder, never thrown away. <kbd>Mod</kbd>+<kbd>Z</kbd> undoes either. <kbd>J</kbd> never touches your originals. One photograph can go to several riders — file it again under a different number, pressing <kbd>&uarr;</kbd> first to outline the other rider's bike. A photograph you have moved cannot go to a second rider, because it is no longer there to file.</p>
+    <p data-hr><strong>Vaše fotografije se samo čitaju &mdash; osim ako pritisnete <kbd>L</kbd> ili <kbd>Backspace</kbd>.</strong> Razvrstavanje kopira datoteke; ništa se u izvornoj mapi ne premješta, ne preimenuje niti mijenja. Dvije su iznimke, i morate ih pritisnuti. <kbd>L</kbd> fotografiju spremi pa izvornik obriše iz mape s fotografijama. <kbd>Backspace</kbd> briše fotografiju pod pokazivačem iz posla: njezine se datoteke premještaju u mapu <em>Deleted by Sofric Sort</em> na vrhu mape s fotografijama i nikad se ne bacaju. <kbd>Mod</kbd>+<kbd>Z</kbd> poništava i jedno i drugo. <kbd>J</kbd> vaše izvornike nikad ne dira. Jedna fotografija može ići kod više vozača — spremite je ponovno pod drugim brojem, a prije toga tipkom <kbd>&uarr;</kbd> obrubite motor drugog vozača. Premještena fotografija ne može ići kod drugog vozača jer je ondje više nema.</p>
   </div>
 
-  <p data-en><strong><kbd>J</kbd> is <kbd>Enter</kbd>, and <kbd>L</kbd> is <kbd>Enter</kbd> that tidies up behind it.</strong> Type a number and press <kbd>J</kbd>, and the photo is copied into that album exactly as <kbd>Enter</kbd> does &mdash; the same key you are used to reaching for. Press <kbd>L</kbd> instead and it is copied there and then taken away from where it was: out of the photos folder in the sorting view, out of the album you are looking at in the album browser. Both work on whatever is selected, both ask the same question before filing into an album that looks wrong, and both are undone by <kbd>Mod</kbd>+<kbd>Z</kbd>, which puts a moved photo back where it came from. A photo you have moved leaves the sorting view: there is nothing left there to decide about it. It is still in its album, and the album browser still shows it.</p>
-  <p data-hr><strong><kbd>J</kbd> je <kbd>Enter</kbd>, a <kbd>L</kbd> je <kbd>Enter</kbd> koji počisti za sobom.</strong> Upišite broj i pritisnite <kbd>J</kbd> i fotografija se kopira u taj album, točno kao s <kbd>Enterom</kbd> &mdash; ista tipka na koju ste navikli. Pritisnete li <kbd>L</kbd>, kopira se onamo pa se ukloni odande gdje je bila: iz mape s fotografijama u razvrstavanju, iz albuma koji gledate u pregledniku albuma. Obje rade na onome što je označeno, obje postavljaju isto pitanje prije spremanja u album koji izgleda krivo, i obje poništava <kbd>Mod</kbd>+<kbd>Z</kbd>, koji premještenu fotografiju vraća odakle je došla. Premještena fotografija nestaje iz razvrstavanja: o njoj ondje više nema što odlučiti. I dalje je u svom albumu i preglednik albuma je i dalje prikazuje.</p>
+  <p data-en><strong><kbd>J</kbd> copies, and <kbd>L</kbd> moves.</strong> Both open the album window, and <kbd>Enter</kbd> in it does what the key said. With <kbd>J</kbd> the photo is copied into the album you type &mdash; the letter you are used to reaching for. With <kbd>L</kbd> it is copied there and then taken away from where it was: out of the photos folder in the sorting view, out of the album you are looking at in the album browser &mdash; and the window's title says so before you type anything. Both work on whatever is selected, both ask the same question before filing into an album that looks wrong, and both are undone by <kbd>Mod</kbd>+<kbd>Z</kbd>, which puts a moved photo back where it came from. A photo you have moved leaves the sorting view: there is nothing left there to decide about it. It is still in its album, and the album browser still shows it.</p>
+  <p data-hr><strong><kbd>J</kbd> kopira, a <kbd>L</kbd> premješta.</strong> Obje otvaraju prozor za album, a <kbd>Enter</kbd> u njemu učini ono što je tipka rekla. S <kbd>J</kbd> se fotografija kopira u album koji upišete &mdash; slovo za kojim ste navikli posegnuti. S <kbd>L</kbd> se kopira onamo pa se ukloni odande gdje je bila: iz mape s fotografijama u razvrstavanju, iz albuma koji gledate u pregledniku albuma &mdash; a naslov prozora to kaže prije nego išta upišete. Obje rade na onome što je označeno, obje postavljaju isto pitanje prije spremanja u album koji izgleda krivo, i obje poništava <kbd>Mod</kbd>+<kbd>Z</kbd>, koji premještenu fotografiju vraća odakle je došla. Premještena fotografija nestaje iz razvrstavanja: o njoj ondje više nema što odlučiti. I dalje je u svom albumu i preglednik albuma je i dalje prikazuje.</p>
 
-  <p data-en><strong>The strip under the photo can be dragged.</strong> Take hold of the photographs and push them sideways, or drag the slim bar beneath them. A whole day is a hand's width of that bar, so while you drag, a small label says which minute of the day is in front of you &mdash; which is how you find the session you are looking for. Neither way moves your place: the photo on screen, and whatever <kbd>Enter</kbd> would file, stay exactly as they were, and a blue tick on the bar shows where you left them. Click a photo in the strip to go to it. The next key you press that moves the cursor brings the strip back to where you are, so you can always get back with one press of <kbd>&rarr;</kbd>. The mouse wheel scrolls it too.</p>
-  <p data-hr><strong>Traku ispod fotografije možete povlačiti.</strong> Uhvatite fotografije i gurnite ih ustranu, ili povucite tanku traku ispod njih. Cijeli dan širok je jedan dlan te trake, pa dok povlačite mala oznaka govori koju minutu dana gledate &mdash; tako nalazite vožnju koju tražite. Ni jedan ni drugi način ne miče vaše mjesto: fotografija na zaslonu i ono što bi <kbd>Enter</kbd> spremio ostaju točno kakvi su bili, a plava crtica na traci pokazuje gdje ste ih ostavili. Kliknite fotografiju u traci da odete na nju. Prva tipka koja pomakne pokazivač vraća traku na mjesto na kojem jeste, pa se uvijek vratite jednim pritiskom na <kbd>&rarr;</kbd>. Pomiče je i kotačić miša.</p>
+  <p data-en><strong>The strip under the photo can be dragged.</strong> Take hold of the photographs and push them sideways, or drag the slim bar beneath them. A whole day is a hand's width of that bar, so while you drag, a small label says which minute of the day is in front of you &mdash; which is how you find the session you are looking for. Neither way moves your place: the photo on screen, and whatever <kbd>J</kbd> would file, stay exactly as they were, and a blue tick on the bar shows where you left them. Click a photo in the strip to go to it. The next key you press that moves the cursor brings the strip back to where you are, so you can always get back with one press of <kbd>&rarr;</kbd>. The mouse wheel scrolls it too.</p>
+  <p data-hr><strong>Traku ispod fotografije možete povlačiti.</strong> Uhvatite fotografije i gurnite ih ustranu, ili povucite tanku traku ispod njih. Cijeli dan širok je jedan dlan te trake, pa dok povlačite mala oznaka govori koju minutu dana gledate &mdash; tako nalazite vožnju koju tražite. Ni jedan ni drugi način ne miče vaše mjesto: fotografija na zaslonu i ono što bi <kbd>J</kbd> spremio ostaju točno kakvi su bili, a plava crtica na traci pokazuje gdje ste ih ostavili. Kliknite fotografiju u traci da odete na nju. Prva tipka koja pomakne pokazivač vraća traku na mjesto na kojem jeste, pa se uvijek vratite jednim pritiskom na <kbd>&rarr;</kbd>. Pomiče je i kotačić miša.</p>
 
   <p data-en><strong>And <kbd>Shift</kbd>+<kbd>PgDn</kbd> goes straight to the next session.</strong> The app splits the day wherever the camera was quiet for three minutes &mdash; between a practice and the race after it, or over lunch &mdash; and those stretches are what <kbd>Shift</kbd>+<kbd>PgDn</kbd> and <kbd>Shift</kbd>+<kbd>PgUp</kbd> step through, landing on the first photo of each with its burst already selected. Where <kbd>PgDn</kbd> moves ten photos, this moves a whole session. The line above the photo says which one you are in, and the strip draws a mark where each one begins. A meeting of eleven thousand photographs and clips came out as forty-one sessions.</p>
   <p data-hr><strong>A <kbd>Shift</kbd>+<kbd>PgDn</kbd> vodi ravno na sljedeću vožnju.</strong> Program dijeli dan svuda gdje je fotoaparat mirovao tri minute &mdash; između treninga i utrke koja slijedi, ili preko stanke za ručak &mdash; i upravo te dijelove preskaču <kbd>Shift</kbd>+<kbd>PgDn</kbd> i <kbd>Shift</kbd>+<kbd>PgUp</kbd>, staju na prvu fotografiju svakoga s već označenim rafalom. Gdje <kbd>PgDn</kbd> pomiče deset fotografija, ovo pomiče cijelu vožnju. Redak iznad fotografije kaže u kojoj ste, a traka crta oznaku ondje gdje svaka počinje. Susret od jedanaest tisuća fotografija i isječaka ispao je četrdeset i jedna vožnja.</p>
@@ -366,21 +372,21 @@
     <figcaption data-hr>Hrpa, sa svim hrpama popisanima lijevo. &nbsp;Fotografije su na ovim slikama izostavljene.</figcaption>
   </figure>
 
-  <p data-en>It needs no album to exist first, so you can run it before you start. You can also run it in the middle of a job, and then it knows the albums you have already filled. It looks at your photos once, works out the piles, and shows you one pile at a time as a grid. Type the number, press <kbd>Enter</kbd>, and every photo in that pile is filed &mdash; one operation, so one <kbd>Mod</kbd>+<kbd>Z</kbd> takes all of it back out again.</p>
-  <p data-hr>Ne treba mu nijedan album unaprijed, pa ga možete pokrenuti prije nego što počnete. Možete ga pokrenuti i usred posla, i tada zna albume koje ste već napunili. Jednom pregleda vaše fotografije, složi hrpe i pokazuje vam jednu hrpu po jednu, kao mrežu. Upišite broj, pritisnite <kbd>Enter</kbd> i svaka je fotografija iz te hrpe spremljena &mdash; jedna radnja, pa jedan <kbd>Mod</kbd>+<kbd>Z</kbd> vraća sve natrag.</p>
+  <p data-en>It needs no album to exist first, so you can run it before you start. You can also run it in the middle of a job, and then it knows the albums you have already filled. It looks at your photos once, works out the piles, and shows you one pile at a time as a grid. Press <kbd>J</kbd>, type the number, press <kbd>Enter</kbd>, and every photo in that pile is filed &mdash; one operation, so one <kbd>Mod</kbd>+<kbd>Z</kbd> takes all of it back out again.</p>
+  <p data-hr>Ne treba mu nijedan album unaprijed, pa ga možete pokrenuti prije nego što počnete. Možete ga pokrenuti i usred posla, i tada zna albume koje ste već napunili. Jednom pregleda vaše fotografije, složi hrpe i pokazuje vam jednu hrpu po jednu, kao mrežu. Pritisnite <kbd>J</kbd>, upišite broj, pritisnite <kbd>Enter</kbd> i svaka je fotografija iz te hrpe spremljena &mdash; jedna radnja, pa jedan <kbd>Mod</kbd>+<kbd>Z</kbd> vraća sve natrag.</p>
 
 
-  <p data-en><strong><kbd>Space</kbd> opens a photo large enough to read the number.</strong> That is how you name a pile: you read the number off the bike. While it is large, <kbd>&larr;</kbd> <kbd>&rarr;</kbd> go through the pile looking for a frame where the board is clear, <kbd>&uarr;</kbd> <kbd>&darr;</kbd> move the outline to another bike if two riders are in the frame, and <kbd>Esc</kbd> or <kbd>Space</kbd> comes back to the pile. You can type the number and press <kbd>Enter</kbd> without going back &mdash; it files the whole pile either way.</p>
-  <p data-hr><strong><kbd>Space</kbd> otvara fotografiju dovoljno veliku da pročitate broj.</strong> Tako imenujete hrpu: broj pročitate s motora. Dok je uvećana, <kbd>&larr;</kbd> <kbd>&rarr;</kbd> idu kroz hrpu u potrazi za snimkom na kojoj je tablica jasna, <kbd>&uarr;</kbd> <kbd>&darr;</kbd> premještaju obrub na drugi motor ako su u kadru dva vozača, a <kbd>Esc</kbd> ili <kbd>Space</kbd> vraća na hrpu. Broj možete upisati i pritisnuti <kbd>Enter</kbd> bez vraćanja &mdash; svejedno sprema cijelu hrpu.</p>
+  <p data-en><strong><kbd>Space</kbd> opens a photo large enough to read the number.</strong> That is how you name a pile: you read the number off the bike. While it is large, <kbd>&larr;</kbd> <kbd>&rarr;</kbd> go through the pile looking for a frame where the board is clear, <kbd>&uarr;</kbd> <kbd>&darr;</kbd> move the outline to another bike if two riders are in the frame, and <kbd>Esc</kbd> or <kbd>Space</kbd> comes back to the pile. You can press <kbd>J</kbd> and name it without going back &mdash; it files the whole pile either way.</p>
+  <p data-hr><strong><kbd>Space</kbd> otvara fotografiju dovoljno veliku da pročitate broj.</strong> Tako imenujete hrpu: broj pročitate s motora. Dok je uvećana, <kbd>&larr;</kbd> <kbd>&rarr;</kbd> idu kroz hrpu u potrazi za snimkom na kojoj je tablica jasna, <kbd>&uarr;</kbd> <kbd>&darr;</kbd> premještaju obrub na drugi motor ako su u kadru dva vozača, a <kbd>Esc</kbd> ili <kbd>Space</kbd> vraća na hrpu. Hrpu možete imenovati tipkom <kbd>J</kbd> i bez vraćanja &mdash; svejedno sprema cijelu hrpu.</p>
 
   <p data-en><strong>Look at the pile before you name it.</strong> About one photo in forty arrives in a pile it does not belong to &mdash; another rider on a machine that looks much the same. <kbd>X</kbd> takes the photos you have selected out of the pile before it is filed, and <kbd>X</kbd> again puts one back, so taking one out by mistake costs nothing. Anything you take out is offered again at the end of the run. <kbd>Tab</kbd> passes over a pile without naming it, and <kbd>Esc</kbd> ends the pass.</p>
   <p data-hr><strong>Pogledajte hrpu prije nego što je imenujete.</strong> Otprilike jedna fotografija u četrdeset dođe u hrpu kojoj ne pripada &mdash; drugi vozač na motoru koji izgleda vrlo slično. <kbd>X</kbd> vadi označene fotografije iz hrpe prije spremanja, a ponovni <kbd>X</kbd> vraća ih natrag, pa izbacivanje zabunom ništa ne stoji. Sve što izvadite ponudi se ponovno na kraju prolaza. <kbd>Tab</kbd> preskače hrpu bez imenovanja, a <kbd>Esc</kbd> prekida prolaz.</p>
 
-  <p data-en><strong><kbd>B</kbd> goes to the biggest pile still waiting to be named,</strong> and pressing it again goes to the next biggest &mdash; the button above the grid does the same. That is how you come back to the big piles when naming has carried you off among the small ones: after you name a pile the app goes to whichever of the rest most resembles it, which is what puts the number in the box for you, but it can leave you a long way down the list while the biggest are still at the top waiting. A pile you passed over with <kbd>Tab</kbd> is not waiting any more, so <kbd>B</kbd> does not offer it again; it is still on the list, one click or <kbd>PgUp</kbd> away.</p>
-  <p data-hr><strong><kbd>B</kbd> vodi na najveću hrpu koja još čeka imenovanje,</strong> a ponovni pritisak na sljedeću najveću &mdash; gumb iznad mreže radi isto. Tako se vraćate na velike hrpe kad vas je imenovanje odvelo među male: nakon što imenujete hrpu, program ide na onu koja joj najviše sliči, zbog čega je broj već u okviru, ali vas to može odvesti daleko niz popis dok najveće još čekaju na vrhu. Hrpa koju ste preskočili s <kbd>Tab</kbd> više ne čeka, pa je <kbd>B</kbd> ne nudi ponovno; i dalje je na popisu, jedan klik ili <kbd>PgUp</kbd> daleko.</p>
+  <p data-en><strong><kbd>B</kbd> goes to the biggest pile still waiting to be named,</strong> and pressing it again goes to the next biggest &mdash; the button above the grid does the same. That is how you come back to the big piles when naming has carried you off among the small ones: after you name a pile the app goes to whichever of the rest most resembles it, which is why its number is already suggested when you press <kbd>J</kbd>, but it can leave you a long way down the list while the biggest are still at the top waiting. A pile you passed over with <kbd>Tab</kbd> is not waiting any more, so <kbd>B</kbd> does not offer it again; it is still on the list, one click or <kbd>PgUp</kbd> away.</p>
+  <p data-hr><strong><kbd>B</kbd> vodi na najveću hrpu koja još čeka imenovanje,</strong> a ponovni pritisak na sljedeću najveću &mdash; gumb iznad mreže radi isto. Tako se vraćate na velike hrpe kad vas je imenovanje odvelo među male: nakon što imenujete hrpu, program ide na onu koja joj najviše sliči, zbog čega je njezin broj već predložen kad pritisnete <kbd>J</kbd>, ali vas to može odvesti daleko niz popis dok najveće još čekaju na vrhu. Hrpa koju ste preskočili s <kbd>Tab</kbd> više ne čeka, pa je <kbd>B</kbd> ne nudi ponovno; i dalje je na popisu, jedan klik ili <kbd>PgUp</kbd> daleko.</p>
 
-  <p data-en><strong>Every pile is listed down the left,</strong> the way your albums are in the album browser &mdash; its first photo, how many it holds, and what became of it. <kbd>PgUp</kbd> and <kbd>PgDn</kbd> go from one pile to the next, and clicking a pile goes straight to it, so one you passed over is always one click away. The list stays in the order the piles were worked out and never re-sorts itself; what moves is where you are in it. When you name a pile, the app jumps to whichever of the rest most resembles it &mdash; that is what puts the number in the box for you &mdash; and the list shows you where it went.</p>
-  <p data-hr><strong>Sve su hrpe popisane lijevo,</strong> kao i vaši albumi u pregledniku albuma &mdash; prva fotografija, koliko ih sadrži i što je s njom bilo. <kbd>PgUp</kbd> i <kbd>PgDn</kbd> idu s jedne hrpe na sljedeću, a klik na hrpu vodi ravno na nju, pa je hrpa koju ste preskočili uvijek jedan klik daleko. Popis ostaje u redoslijedu kojim su hrpe složene i nikad se sam ne presloži; pomiče se samo mjesto na kojem ste. Kad imenujete hrpu, program skoči na onu koja joj najviše sliči &mdash; zbog toga je broj već u okviru &mdash; a popis pokazuje kamo je otišao.</p>
+  <p data-en><strong>Every pile is listed down the left,</strong> the way your albums are in the album browser &mdash; its first photo, how many it holds, and what became of it. <kbd>PgUp</kbd> and <kbd>PgDn</kbd> go from one pile to the next, and clicking a pile goes straight to it, so one you passed over is always one click away. The list stays in the order the piles were worked out and never re-sorts itself; what moves is where you are in it. When you name a pile, the app jumps to whichever of the rest most resembles it &mdash; that is why its number is already suggested &mdash; and the list shows you where it went.</p>
+  <p data-hr><strong>Sve su hrpe popisane lijevo,</strong> kao i vaši albumi u pregledniku albuma &mdash; prva fotografija, koliko ih sadrži i što je s njom bilo. <kbd>PgUp</kbd> i <kbd>PgDn</kbd> idu s jedne hrpe na sljedeću, a klik na hrpu vodi ravno na nju, pa je hrpa koju ste preskočili uvijek jedan klik daleko. Popis ostaje u redoslijedu kojim su hrpe složene i nikad se sam ne presloži; pomiče se samo mjesto na kojem ste. Kad imenujete hrpu, program skoči na onu koja joj najviše sliči &mdash; zbog toga je njezin broj već predložen &mdash; a popis pokazuje kamo je otišao.</p>
 
 
   <p class="note" data-en>Photos you have already filed are left alone, and so are ones you have thrown out with <kbd>X</kbd>. The number offered for a pile is the ordinary suggestion, at the same bar it uses everywhere else, and the misfile warning asks the same question before a pile is filed as it does before a burst. Photos that join no pile &mdash; no motorcycle in them, or too small or blurred to judge &mdash; are offered on their own at the end.</p>
@@ -388,17 +394,17 @@
 
   <h2 data-en>Two riders, one number</h2>
   <h2 data-hr>Dva vozača, isti broj</h2>
-  <p class="lede" data-en>Type the number, then press <kbd>-</kbd>. The second rider gets <code>42 b</code>.</p>
-  <p class="lede" data-hr>Upišite broj, zatim pritisnite <kbd>-</kbd>. Drugi vozač dobiva <code>42 b</code>.</p>
+  <p class="lede" data-en>Type <code>42 b</code> for the second rider. The window lists the albums that start with what you type.</p>
+  <p class="lede" data-hr>Za drugog vozača upišite <code>42 b</code>. Prozor nabraja albume koji počinju onim što upisujete.</p>
 
-  <p data-en>When a meeting runs two classes, two riders can wear the same number. Type <kbd>4</kbd><kbd>2</kbd> as usual and press <kbd>-</kbd> — the box reads <code>42 b</code>, and <kbd>Enter</kbd> files them into a folder of their own. Press it again for <code>42 c</code>, and again to come back round to plain <code>42</code>.</p>
-  <p data-hr>Kad se na jednom događaju voze dvije klase, dva vozača mogu imati isti broj. Upišite <kbd>4</kbd><kbd>2</kbd> kao i inače pa pritisnite <kbd>-</kbd> — u okviru piše <code>42 b</code>, a <kbd>Enter</kbd> ih sprema u vlastitu mapu. Pritisnite ponovno za <code>42 c</code>, i još jednom da se vratite na obični <code>42</code>.</p>
+  <p data-en>When a meeting runs two classes, two riders can wear the same number. Press <kbd>J</kbd> and type <code>42 b</code> — a space and a letter — and <kbd>Enter</kbd> files them into a folder of their own; <code>42 c</code> for a third. As you type <kbd>4</kbd><kbd>2</kbd>, the albums already filed that start with it are listed under the box, so <code>42</code> and <code>42 b</code> are both in front of you before you choose; <kbd>Tab</kbd> fills in the first.</p>
+  <p data-hr>Kad se na jednom događaju voze dvije klase, dva vozača mogu imati isti broj. Pritisnite <kbd>J</kbd> i upišite <code>42 b</code> — razmak i slovo — a <kbd>Enter</kbd> ih sprema u vlastitu mapu; <code>42 c</code> za trećega. Dok upisujete <kbd>4</kbd><kbd>2</kbd>, ispod okvira se nabrajaju već spremljeni albumi koji tako počinju, pa su vam prije odabira pred očima i <code>42</code> i <code>42 b</code>; <kbd>Tab</kbd> upisuje prvi.</p>
 
-  <p data-en>Once both exist, the app works out which of them a photograph belongs to and aims there by itself — the letter appears in grey, added by the app rather than typed by you. Press <kbd>-</kbd> to overrule it. Everything else is unchanged: a number with only one album behaves exactly as it always has.</p>
-  <p data-hr>Kad oba postoje, program sam prepoznaje kojem od njih fotografija pripada i cilja tamo — slovo se prikazuje sivo, jer ga je dodao program, a ne vi. Pritisnite <kbd>-</kbd> da ga nadglasate. Sve ostalo ostaje isto: broj koji ima samo jedan album ponaša se točno kao i dosad.</p>
+  <p data-en>What you type is exactly the album it goes to: <code>42</code> files into 42, never into 42 b. If the bike looks like the other rider's, the warning says so before anything is filed — <em>this looks like 42 b, not 42</em>.</p>
+  <p data-hr>Ono što upišete točno je album u koji ide: <code>42</code> sprema u 42, nikad u 42 b. Ako motor izgleda kao onaj drugog vozača, upozorenje to kaže prije nego se išta spremi — <em>ovo izgleda kao 42 b, a ne 42</em>.</p>
 
-  <p class="note" data-en>The folder is called <code>42 b</code> so it sits next to <code>42</code> in Explorer. Rename it to the rider's name whenever you like — the app picks the new name up the next time you open the job.</p>
-  <p class="note" data-hr>Mapa se zove <code>42 b</code> pa u Exploreru stoji odmah do <code>42</code>. Preimenujte je u ime vozača kad god želite — program će novi naziv preuzeti sljedeći put kad otvorite posao.</p>
+  <p class="note" data-en>The folder is called <code>42 b</code> so it sits next to <code>42</code> in Explorer. Rename it to the rider's name whenever you like, or type the name in the first place — an album can be called <code>42 Marko</code> from the start, and <code>42 marko</code> typed later still goes into it. The app picks a renamed folder up the next time you open the job.</p>
+  <p class="note" data-hr>Mapa se zove <code>42 b</code> pa u Exploreru stoji odmah do <code>42</code>. Preimenujte je u ime vozača kad god želite, ili upišite ime odmah — album se od početka može zvati <code>42 Marko</code>, a <code>42 marko</code> upisano poslije i dalje ide u njega. Program preimenovanu mapu preuzima sljedeći put kad otvorite posao.</p>
 
   <h2 data-en>Clips</h2>
   <h2 data-hr>Isječci</h2>
@@ -411,8 +417,8 @@
     <figcaption data-hr>Isje&#269;ak: koliko traje i koja se od devet slika prikazuje. U traci svaki isje&#269;ak nosi svoju duljinu. &nbsp;Fotografije su na ovim slikama izostavljene.</figcaption>
   </figure>
 
-  <p data-en>A clip is filed exactly as a photo is: type the number and press <kbd>Enter</kbd>, and the whole clip is copied into that rider&rsquo;s folder. <kbd>X</kbd> rejects it, <kbd>Mod</kbd>+<kbd>Z</kbd> undoes it. It shows a frame from the middle of itself, which is usually where the rider is.</p>
-  <p data-hr>Isječak se sprema jednako kao fotografija: upišite broj i pritisnite <kbd>Enter</kbd>, i cijeli se isječak kopira u mapu tog vozača. <kbd>X</kbd> ga odbacuje, <kbd>Mod</kbd>+<kbd>Z</kbd> poništava. Prikazuje sliku iz svoje sredine, gdje je vozač obično i vidljiv.</p>
+  <p data-en>A clip is filed exactly as a photo is: press <kbd>J</kbd>, type the number and press <kbd>Enter</kbd>, and the whole clip is copied into that rider&rsquo;s folder. <kbd>X</kbd> rejects it, <kbd>Mod</kbd>+<kbd>Z</kbd> undoes it. It shows a frame from the middle of itself, which is usually where the rider is.</p>
+  <p data-hr>Isječak se sprema jednako kao fotografija: pritisnite <kbd>J</kbd>, upišite broj i pritisnite <kbd>Enter</kbd>, i cijeli se isječak kopira u mapu tog vozača. <kbd>X</kbd> ga odbacuje, <kbd>Mod</kbd>+<kbd>Z</kbd> poništava. Prikazuje sliku iz svoje sredine, gdje je vozač obično i vidljiv.</p>
 
   <p data-en><strong>A clip does not play, and there is no sound.</strong> <kbd>.</kbd> moves to the next of nine frames spread across it and <kbd>,</kbd> back &mdash; the same nine whether the clip is four seconds or twenty, so any clip takes the same nine presses to look through. That is enough to see whose it is, which is what you are deciding.</p>
   <p data-hr><strong>Isječak se ne reproducira i nema zvuka.</strong> <kbd>.</kbd> ide na sljedeću od devet slika raspoređenih po njemu, a <kbd>,</kbd> natrag &mdash; istih devet bilo da isječak traje četiri sekunde ili dvadeset, pa svaki zahtijeva jednako devet pritisaka. To je dovoljno da vidite čiji je, a to je ono o čemu odlučujete.</p>
@@ -426,14 +432,14 @@
 
   <h2 data-en>Finding one rider again</h2>
   <h2 data-hr>Ponovno pronaći jednog vozača</h2>
-  <p class="lede" data-en>Type the number, then <kbd>F</kbd> to see only them, <kbd>O</kbd> to open their folder &mdash; or <kbd>A</kbd> for the album browser, below.</p>
-  <p class="lede" data-hr>Upišite broj, zatim <kbd>F</kbd> da vidite samo njega, <kbd>O</kbd> da otvorite njegovu mapu &mdash; ili <kbd>A</kbd> za preglednik albuma, niže.</p>
+  <p class="lede" data-en><kbd>F</kbd> to see only one rider, <kbd>O</kbd> to open their folder &mdash; or <kbd>A</kbd> for the album browser, below. Each opens the album window to ask which.</p>
+  <p class="lede" data-hr><kbd>F</kbd> da vidite samo jednog vozača, <kbd>O</kbd> da otvorite njegovu mapu &mdash; ili <kbd>A</kbd> za preglednik albuma, niže. Svaka otvara prozor za album i pita koji.</p>
 
-  <p data-en>A number in front of a key means &ldquo;that album&rdquo;. Type <kbd>4</kbd><kbd>2</kbd> then <kbd>F</kbd> and the filmstrip shows only rider 42, so you can check they got everything without hunting for one of their photographs first; <kbd>Esc</kbd> comes back. Type <kbd>4</kbd><kbd>2</kbd> then <kbd>O</kbd> and their folder opens in Explorer rather than the albums folder with two hundred others in it.</p>
-  <p data-hr>Broj ispred tipke znači &bdquo;taj album&ldquo;. Upišite <kbd>4</kbd><kbd>2</kbd> pa <kbd>F</kbd> i traka prikazuje samo vozača 42, pa možete provjeriti je li dobio sve bez traženja neke njegove fotografije; <kbd>Esc</kbd> vraća natrag. Upišite <kbd>4</kbd><kbd>2</kbd> pa <kbd>O</kbd> i njegova se mapa otvara u Exploreru, umjesto mape s albumima u kojoj ih je dvjesto.</p>
+  <p data-en>Press <kbd>F</kbd>, type <kbd>4</kbd><kbd>2</kbd> and <kbd>Enter</kbd>, and the filmstrip shows only rider 42, so you can check they got everything without hunting for one of their photographs first; <kbd>Esc</kbd> comes back. <kbd>O</kbd>, <kbd>4</kbd><kbd>2</kbd>, <kbd>Enter</kbd> opens their folder in Explorer rather than the albums folder with two hundred others in it.</p>
+  <p data-hr>Pritisnite <kbd>F</kbd>, upišite <kbd>4</kbd><kbd>2</kbd> i <kbd>Enter</kbd> i traka prikazuje samo vozača 42, pa možete provjeriti je li dobio sve bez traženja neke njegove fotografije; <kbd>Esc</kbd> vraća natrag. <kbd>O</kbd>, <kbd>4</kbd><kbd>2</kbd>, <kbd>Enter</kbd> otvara njegovu mapu u Exploreru, umjesto mape s albumima u kojoj ih je dvjesto.</p>
 
-  <p data-en>With nothing typed both keys do what they always did &mdash; <kbd>F</kbd> shows the album this photograph is in, <kbd>O</kbd> opens the albums folder. And once you have renamed <code>42</code> to something like <code>42 Marko</code>, typing <kbd>4</kbd><kbd>2</kbd> still finds it. If two folders could be meant, it names them and opens neither.</p>
-  <p data-hr>Ako ništa nije upisano, obje tipke rade kao i dosad &mdash; <kbd>F</kbd> prikazuje album u kojem je ova fotografija, <kbd>O</kbd> otvara mapu s albumima. A kad preimenujete <code>42</code> u nešto poput <code>42 Marko</code>, upisivanje <kbd>4</kbd><kbd>2</kbd> i dalje ga pronalazi. Ako bi se moglo raditi o dvije mape, program ih imenuje i ne otvara nijednu.</p>
+  <p data-en>The window opens already holding what the key used to do on its own &mdash; <kbd>F</kbd> the album this photograph is in, <kbd>O</kbd> nothing, which opens the albums folder &mdash; so <kbd>Enter</kbd> straight away does what it always did. Once you have renamed <code>42</code> to something like <code>42 Marko</code>, typing <kbd>4</kbd><kbd>2</kbd> still finds it. If two albums could be meant, the window names them and opens neither.</p>
+  <p data-hr>Prozor se otvara s onim što je tipka prije radila sama &mdash; <kbd>F</kbd> s albumom u kojem je ova fotografija, <kbd>O</kbd> prazan, što otvara mapu s albumima &mdash; pa <kbd>Enter</kbd> odmah radi ono što je uvijek radio. Kad preimenujete <code>42</code> u nešto poput <code>42 Marko</code>, upisivanje <kbd>4</kbd><kbd>2</kbd> i dalje ga pronalazi. Ako bi se moglo raditi o dva albuma, prozor ih imenuje i ne otvara nijedan.</p>
 
   <p data-en><kbd>U</kbd> narrows the view the other way: everything you have not decided about yet, with what you have filed and rejected taken out. Useful at the end of a card to see what is left, and after a break to find where you stopped. Filing from that view makes photographs disappear as you go, and you keep your place rather than being thrown back to the start. <kbd>Esc</kbd>, or the button in the blue bar, brings everything back.</p>
   <p data-hr><kbd>U</kbd> sužava pregled na drugi način: sve o čemu još niste odlučili, bez onoga što ste spremili i odbacili. Korisno na kraju kartice da vidite što je ostalo, i nakon pauze da nađete gdje ste stali. Spremanje iz tog pregleda uklanja fotografije kako idete, a vi zadržavate svoje mjesto umjesto da vas vrati na početak. <kbd>Esc</kbd>, ili gumb u plavoj traci, vraća sve natrag.</p>
@@ -441,16 +447,16 @@
   <p data-en><kbd>Shift</kbd>+<kbd>F</kbd> narrows it to the session you are in, and it goes together with <kbd>U</kbd> rather than instead of it &mdash; so you can work through what is left of one race and nothing else. <kbd>Shift</kbd>+<kbd>PgDn</kbd> then moves that view on to the next session with anything left in it, and <kbd>Esc</kbd> brings the whole day back.</p>
   <p data-hr><kbd>Shift</kbd>+<kbd>F</kbd> sužava pregled na vožnju u kojoj ste, i to ide zajedno s <kbd>U</kbd>, a ne umjesto njega &mdash; pa možete obraditi ono što je ostalo od jedne utrke i ništa drugo. <kbd>Shift</kbd>+<kbd>PgDn</kbd> zatim pomiče taj pregled na sljedeću vožnju u kojoj je nešto ostalo, a <kbd>Esc</kbd> vraća cijeli dan.</p>
 
-  <p data-en><kbd>Shift</kbd>+<kbd>U</kbd> shows the photos you rejected, which nothing else does. <kbd>X</kbd> rejects a photo and there was no way back to it afterwards except <kbd>Mod</kbd>+<kbd>Z</kbd> straight away; in this view, <kbd>X</kbd> takes the rejection back and the photo is undecided again, and a number with <kbd>Enter</kbd> files it as usual. Nothing on your drive moves either way &mdash; a rejected photo was never copied anywhere.</p>
-  <p data-hr><kbd>Shift</kbd>+<kbd>U</kbd> prikazuje fotografije koje ste odbacili, što ne radi ništa drugo. <kbd>X</kbd> odbacuje fotografiju, a natrag se poslije nije moglo osim s <kbd>Mod</kbd>+<kbd>Z</kbd> odmah; u ovom pregledu <kbd>X</kbd> poništava odbacivanje i fotografija je opet neodlučena, a broj s <kbd>Enterom</kbd> sprema je kao i inače. Ni u jednom smjeru se na disku ništa ne miče &mdash; odbačena fotografija nikad nije nikamo ni kopirana.</p>
+  <p data-en><kbd>Shift</kbd>+<kbd>U</kbd> shows the photos you rejected, which nothing else does. <kbd>X</kbd> rejects a photo and there was no way back to it afterwards except <kbd>Mod</kbd>+<kbd>Z</kbd> straight away; in this view, <kbd>X</kbd> takes the rejection back and the photo is undecided again, and <kbd>J</kbd> files it as usual. Nothing on your drive moves either way &mdash; a rejected photo was never copied anywhere.</p>
+  <p data-hr><kbd>Shift</kbd>+<kbd>U</kbd> prikazuje fotografije koje ste odbacili, što ne radi ništa drugo. <kbd>X</kbd> odbacuje fotografiju, a natrag se poslije nije moglo osim s <kbd>Mod</kbd>+<kbd>Z</kbd> odmah; u ovom pregledu <kbd>X</kbd> poništava odbacivanje i fotografija je opet neodlučena, a <kbd>J</kbd> je sprema kao i inače. Ni u jednom smjeru se na disku ništa ne miče &mdash; odbačena fotografija nikad nije nikamo ni kopirana.</p>
 
   <p data-en><strong><kbd>Mod</kbd>+<kbd>D</kbd> asks what is left before you call the job done.</strong> How many photos you have not decided about, how many you rejected, and any album holding only one or two photos &mdash; because typing <kbd>4</kbd> when you meant <kbd>4</kbd><kbd>2</kbd> makes an album called 4 and looks perfectly normal at the time. When that is what has happened the line says so: <em>4 holds 1 photo, and 42 holds 318 &mdash; did you mean 42?</em> Each line has a button that takes you there, and nothing in the panel is a new key to learn.</p>
   <p data-hr><strong><kbd>Mod</kbd>+<kbd>D</kbd> pita što je ostalo prije nego posao proglasite gotovim.</strong> Koliko fotografija niste odlučili, koliko ste ih odbacili, i svaki album s tek jednom ili dvije fotografije &mdash; jer ako upišete <kbd>4</kbd> kad ste mislili <kbd>4</kbd><kbd>2</kbd>, nastane album 4 i u tom trenutku izgleda sasvim uobičajeno. Kad je tako, redak to i kaže: <em>4 sadrži 1 fotografiju, a 42 ih ima 318 &mdash; jeste li mislili 42?</em> Svaki redak ima gumb koji vas vodi onamo, a ništa u ploči nije nova tipka za pamćenje.</p>
 
   <h2 data-en>Checking an album</h2>
   <h2 data-hr>Pregled albuma</h2>
-  <p class="lede" data-en>Press <kbd>A</kbd> to see every album &mdash; and the one you pick, whole, as a grid of its photos.</p>
-  <p class="lede" data-hr>Pritisnite <kbd>A</kbd> da vidite sve albume &mdash; a onaj koji odaberete, cijeli, kao mrežu fotografija.</p>
+  <p class="lede" data-en>Press <kbd>A</kbd> and <kbd>Enter</kbd> to see every album &mdash; and the one you are on, or the one you type, whole, as a grid of its photos.</p>
+  <p class="lede" data-hr>Pritisnite <kbd>A</kbd> i <kbd>Enter</kbd> da vidite sve albume &mdash; a onaj na kojem ste, ili onaj koji upišete, cijeli, kao mrežu fotografija.</p>
 
   <figure class="shot">
     <img src="img/albums.png" alt="" loading="lazy" decoding="async">
@@ -458,11 +464,11 @@
     <figcaption data-hr>Preglednik albuma: albumi lijevo, odabrani kao mre&#382;a. &nbsp;Fotografije su na ovim slikama izostavljene.</figcaption>
   </figure>
 
-  <p data-en>The albums are listed down the left in number order, each with its first photo and how many are in it. <kbd>PgUp</kbd> and <kbd>PgDn</kbd> go from one album to the next; the arrows move about the grid. <kbd>Space</kbd> opens a photo large and goes back again; while it is large, <kbd>&larr;</kbd> <kbd>&rarr;</kbd> go through the album. A number then <kbd>A</kbd> opens that album. <kbd>G</kbd> takes you to the photo among all the others in the sorting view, with the rest of its burst either side. <kbd>Esc</kbd>, or <kbd>A</kbd> again, takes you back to where you were.</p>
-  <p data-hr>Albumi su popisani lijevo, po redu brojeva, svaki sa svojom prvom fotografijom i brojem fotografija u njemu. <kbd>PgUp</kbd> i <kbd>PgDn</kbd> idu s jednog albuma na sljedeći; strelice se kreću po mreži. <kbd>Space</kbd> otvara fotografiju uvećano i vraća natrag; dok je uvećana, <kbd>&larr;</kbd> <kbd>&rarr;</kbd> idu kroz album. Broj pa <kbd>A</kbd> otvara taj album. <kbd>G</kbd> vas vodi na tu fotografiju među svima ostalima u razvrstavanju, s ostatkom njezina rafala sa strane. <kbd>Esc</kbd>, ili ponovno <kbd>A</kbd>, vraća vas gdje ste bili.</p>
+  <p data-en>The albums are listed down the left in number order, each with its first photo and how many are in it. <kbd>PgUp</kbd> and <kbd>PgDn</kbd> go from one album to the next; the arrows move about the grid. <kbd>Space</kbd> opens a photo large and goes back again; while it is large, <kbd>&larr;</kbd> <kbd>&rarr;</kbd> go through the album. <kbd>A</kbd> opens the album window again, holding the album on screen, to go to another. <kbd>G</kbd> takes you to the photo among all the others in the sorting view, with the rest of its burst either side. <kbd>Esc</kbd> takes you back to where you were.</p>
+  <p data-hr>Albumi su popisani lijevo, po redu brojeva, svaki sa svojom prvom fotografijom i brojem fotografija u njemu. <kbd>PgUp</kbd> i <kbd>PgDn</kbd> idu s jednog albuma na sljedeći; strelice se kreću po mreži. <kbd>Space</kbd> otvara fotografiju uvećano i vraća natrag; dok je uvećana, <kbd>&larr;</kbd> <kbd>&rarr;</kbd> idu kroz album. <kbd>A</kbd> ponovno otvara prozor za album, s albumom na zaslonu, da odete u drugi. <kbd>G</kbd> vas vodi na tu fotografiju među svima ostalima u razvrstavanju, s ostatkom njezina rafala sa strane. <kbd>Esc</kbd> vas vraća gdje ste bili.</p>
 
-  <p data-en>It changes an album the way the album view does: <kbd>X</kbd> takes the selected photos out &mdash; only the copies the app made are deleted, and <kbd>Mod</kbd>+<kbd>Z</kbd> puts them back &mdash; and a number with <kbd>Enter</kbd> &mdash; or <kbd>J</kbd> &mdash; files them into another album as well. <kbd>L</kbd> moves them there instead: into the new album, and out of the one you are looking at. A photo you put in that album yourself is copied on and left where it is, and the app says so. The warning asks the same question it asks while sorting. On a photo opened large, <kbd>&uarr;</kbd> <kbd>&darr;</kbd> move the outline to another bike first, so a frame with two riders goes into the second one's album as their bike.</p>
-  <p data-hr>Album mijenja kao i pregled albuma: <kbd>X</kbd> vadi označene fotografije &mdash; brišu se samo kopije koje je napravio program, a <kbd>Mod</kbd>+<kbd>Z</kbd> ih vraća &mdash; a broj s <kbd>Enterom</kbd> &mdash; ili s <kbd>J</kbd> &mdash; sprema ih i u drugi album. <kbd>L</kbd> ih umjesto toga premješta: u novi album, a iz onoga koji gledate. Fotografija koju ste sami stavili u taj album kopira se dalje i ostaje gdje jest, i program to kaže. Upozorenje postavlja isto pitanje kao pri razvrstavanju. Na uvećanoj fotografiji <kbd>&uarr;</kbd> <kbd>&darr;</kbd> najprije premjestite obrub na drugi motor, pa fotografija s dva vozača ide u album drugoga kao njegov motor.</p>
+  <p data-en>It changes an album the way the album view does: <kbd>X</kbd> takes the selected photos out &mdash; only the copies the app made are deleted, and <kbd>Mod</kbd>+<kbd>Z</kbd> puts them back &mdash; and <kbd>J</kbd> files them into another album as well, named in the album window. <kbd>L</kbd> moves them there instead: into the new album, and out of the one you are looking at. A photo you put in that album yourself is copied on and left where it is, and the app says so. The warning asks the same question it asks while sorting. On a photo opened large, <kbd>&uarr;</kbd> <kbd>&darr;</kbd> move the outline to another bike first, so a frame with two riders goes into the second one's album as their bike.</p>
+  <p data-hr>Album mijenja kao i pregled albuma: <kbd>X</kbd> vadi označene fotografije &mdash; brišu se samo kopije koje je napravio program, a <kbd>Mod</kbd>+<kbd>Z</kbd> ih vraća &mdash; a <kbd>J</kbd> ih sprema i u drugi album, imenovan u prozoru za album. <kbd>L</kbd> ih umjesto toga premješta: u novi album, a iz onoga koji gledate. Fotografija koju ste sami stavili u taj album kopira se dalje i ostaje gdje jest, i program to kaže. Upozorenje postavlja isto pitanje kao pri razvrstavanju. Na uvećanoj fotografiji <kbd>&uarr;</kbd> <kbd>&darr;</kbd> najprije premjestite obrub na drugi motor, pa fotografija s dva vozača ide u album drugoga kao njegov motor.</p>
 
   <p data-en><strong>It points at photos that look as though they are in the wrong album.</strong> A burst that looks like another rider's album is marked in amber on its photos &mdash; <em>looks like 17</em>, or <em>unlike 42</em> when nothing in the album resembles it &mdash; and the same words are under the photo when you open it large. Each album's line in the list says how many of its bursts look wrong. <kbd>N</kbd> goes to the next one, in this album or the ones after it, and <kbd>Shift</kbd>+<kbd>N</kbd> back. It is the misfile warning's own judgement made after the fact, so <kbd>Shift</kbd>+<kbd>W</kbd> turns both off. Expect it to mark a burst that was filed correctly about once in thirty-five &mdash; around seven in a day's work &mdash; and to catch nearly every burst filed under the wrong number. A photo filed under two riders is never marked for being in both. In a big job the counts in the list fill in over a little while.</p>
   <p data-hr><strong>Pokazuje fotografije koje izgledaju kao da su u krivom albumu.</strong> Rafal koji izgleda kao album drugog vozača označen je žuto na svojim fotografijama &mdash; <em>izgleda kao 17</em>, ili <em>ne sliči 42</em> kad mu ništa u albumu nije slično &mdash; a iste riječi stoje ispod fotografije kad je otvorite uvećano. Uz svaki album na popisu piše koliko njegovih rafala izgleda krivo. <kbd>N</kbd> vodi na sljedeći, u ovom albumu ili u onima nakon njega, a <kbd>Shift</kbd>+<kbd>N</kbd> natrag. To je isti sud kao upozorenje o krivom albumu, samo naknadno, pa <kbd>Shift</kbd>+<kbd>W</kbd> isključuje oboje. Očekujte da će otprilike jednom u trideset pet označiti rafal koji je dobro spremljen &mdash; oko sedam u danu rada &mdash; i da će uhvatiti gotovo svaki rafal spremljen pod krivim brojem. Fotografija spremljena pod dva vozača nikad nije označena zato što je u oba. U velikom poslu brojevi na popisu popune se kroz neko vrijeme.</p>
@@ -498,9 +504,10 @@
     </div>
     <div class="dock">
       <div class="crop"><span>2/2</span></div>
-      <div class="pill">
+      <div class="pill window">
         <div>
-          <div class="pill-num">84</div>
+          <div class="pill-title" data-en>Copy into album</div><div class="pill-title" data-hr>Kopiraj u album</div>
+          <div class="pill-num">84<span class="caret"></span></div>
           <div class="pill-info">
             <span data-en>6 photos &rarr; new album 84</span>
             <span data-hr>6 fotografija &rarr; novi album 84</span>
@@ -508,20 +515,20 @@
         </div>
       </div>
     </div>
-    <p class="caption" data-en>left: a suggestion — dimmed, dashed border &nbsp;·&nbsp; right: what you typed &nbsp;·&nbsp; beside each: the bike the number goes with, which is outlined on the photograph too</p>
-    <p class="caption" data-hr>lijevo: prijedlog — blijedi tekst, iscrtkani rub &nbsp;·&nbsp; desno: ono što ste upisali &nbsp;·&nbsp; uz svaki: motor uz koji ide broj, koji je obrubljen i na samoj fotografiji</p>
+    <p class="caption" data-en>left: a suggestion, on the photograph — dimmed, dashed border &nbsp;·&nbsp; right: the album window J opens, with what you typed &nbsp;·&nbsp; beside each: the bike the number goes with, which is outlined on the photograph too</p>
+    <p class="caption" data-hr>lijevo: prijedlog, na fotografiji — blijedi tekst, iscrtkani rub &nbsp;·&nbsp; desno: prozor za album koji otvara J, s onim što ste upisali &nbsp;·&nbsp; uz svaki: motor uz koji ide broj, koji je obrubljen i na samoj fotografiji</p>
   </div>
 
   <div class="states">
     <div class="r">
       <span class="k hi" data-en>Three green</span><span class="k hi" data-hr>Tri zelene</span>
-      <p data-en>Likely. It has seen this bike before and is confident. <kbd>Enter</kbd> files it.</p>
-      <p data-hr>Vjerojatno. Već je vidio ovaj motor i siguran je. <kbd>Enter</kbd> ga sprema.</p>
+      <p data-en>Likely. It has seen this bike before and is confident. <kbd>J</kbd> and <kbd>Enter</kbd> file it.</p>
+      <p data-hr>Vjerojatno. Već je vidio ovaj motor i siguran je. <kbd>J</kbd> i <kbd>Enter</kbd> ga spremaju.</p>
     </div>
     <div class="r">
       <span class="k mid" data-en>Two amber</span><span class="k mid" data-hr>Dvije žute</span>
-      <p data-en>Unsure — often because frames within the burst disagreed. Read the number yourself before pressing <kbd>Enter</kbd>.</p>
-      <p data-hr>Nesiguran — često zato što se slike unutar rafala ne slažu. Sami pročitajte broj prije nego pritisnete <kbd>Enter</kbd>.</p>
+      <p data-en>Unsure — often because frames within the burst disagreed. Read the number yourself before you take it.</p>
+      <p data-hr>Nesiguran — često zato što se slike unutar rafala ne slažu. Sami pročitajte broj prije nego ga prihvatite.</p>
     </div>
     <div class="r">
       <span class="k lo" data-en>One red</span><span class="k lo" data-hr>Jedna crvena</span>
@@ -543,15 +550,15 @@
   </div>
 
   <div class="callout warn">
-    <p data-en><strong>Typing always wins.</strong> Press any digit and the suggestion disappears — your number replaces it outright, solid white instead of dimmed. The bike stays beside it, so you can still see which one your number goes with. Backspace back to empty and the suggestion returns.</p>
-    <p data-hr><strong>Upisivanje uvijek ima prednost.</strong> Pritisnite bilo koju znamenku i prijedlog nestaje — vaš broj ga u cijelosti zamjenjuje, bijel umjesto blijed. Motor ostaje pokraj njega, pa i dalje vidite uz koji motor ide vaš broj. Obrišite sve tipkom <kbd>Backspace</kbd> i prijedlog se vraća.</p>
-    <p data-en><kbd>Enter</kbd> on an empty box accepts whatever is shown. If nothing is shown, it does nothing.</p>
-    <p data-hr><kbd>Enter</kbd> na praznom okviru prihvaća ono što piše. Ako ništa ne piše, ne radi ništa.</p>
+    <p data-en><strong>The window opens holding the suggestion, highlighted.</strong> <kbd>J</kbd> then <kbd>Enter</kbd> takes it; type anything and your number replaces it outright, solid white instead of dimmed. The bike stays beside it, so you can still see which one your number goes with.</p>
+    <p data-hr><strong>Prozor se otvara s prijedlogom, označenim.</strong> <kbd>J</kbd> pa <kbd>Enter</kbd> ga prihvaća; upišite bilo što i vaš broj ga u cijelosti zamjenjuje, bijel umjesto blijed. Motor ostaje pokraj njega, pa i dalje vidite uz koji motor ide vaš broj.</p>
+    <p data-en><kbd>Enter</kbd> on its own, with no window open, files nothing &mdash; not even a suggestion. And a suggestion that arrives after the window is open does not change what is in it: only you do.</p>
+    <p data-hr><kbd>Enter</kbd> sam za sebe, bez otvorenog prozora, ne sprema ništa &mdash; ni prijedlog. A prijedlog koji stigne nakon što je prozor otvoren ne mijenja ono što je u njemu: to mijenjate samo vi.</p>
   </div>
 
   <div class="callout warn">
-    <p data-en><strong>It says so before a photograph goes to the wrong rider.</strong> If what you typed does not match the bike on screen, the first <kbd>Enter</kbd> shows a line in amber instead of filing — either <em>this looks like 42 b, not 42</em>, or <em>these photos look unlike the ones already in 42</em>. Press <kbd>Enter</kbd> again to file anyway, or <kbd>Esc</kbd> to dismiss it and keep the number you typed. On a photograph holding more than one bike it adds <em>&uarr; for another bike</em>: often what looks wrong is that the outline is on the other rider.</p>
-    <p data-hr><strong>Javlja se prije nego fotografija ode krivom vozaču.</strong> Ako upisano ne odgovara motoru na ekranu, prvi <kbd>Enter</kbd> umjesto spremanja prikaže žutu poruku — ili <em>ovo izgleda kao 42 b, a ne 42</em>, ili <em>ove fotografije ne sliče onima koje su već u 42</em>. Pritisnite <kbd>Enter</kbd> ponovno da ipak spremite, ili <kbd>Esc</kbd> da je odbacite i zadržite upisani broj. Na fotografiji s više motora dodaje <em>&uarr; za drugi motor</em>: često je ono što izgleda krivo zapravo obrub na drugom vozaču.</p>
+    <p data-en><strong>It says so before a photograph goes to the wrong rider.</strong> If what you typed does not match the bike on screen, the first <kbd>Enter</kbd> in the album window shows a line in amber instead of filing — either <em>this looks like 42 b, not 42</em>, or <em>these photos look unlike the ones already in 42</em>. Press <kbd>Enter</kbd> again to file anyway, change the name to file somewhere else, or <kbd>Esc</kbd> to close the window without filing. On a photograph holding more than one bike it adds <em>&uarr; for another bike</em>: often what looks wrong is that the outline is on the other rider.</p>
+    <p data-hr><strong>Javlja se prije nego fotografija ode krivom vozaču.</strong> Ako upisano ne odgovara motoru na ekranu, prvi <kbd>Enter</kbd> u prozoru za album umjesto spremanja prikaže žutu poruku — ili <em>ovo izgleda kao 42 b, a ne 42</em>, ili <em>ove fotografije ne sliče onima koje su već u 42</em>. Pritisnite <kbd>Enter</kbd> ponovno da ipak spremite, promijenite naziv da spremite drugamo, ili <kbd>Esc</kbd> da zatvorite prozor bez spremanja. Na fotografiji s više motora dodaje <em>&uarr; za drugi motor</em>: često je ono što izgleda krivo zapravo obrub na drugom vozaču.</p>
   </div>
 
   <p class="note" data-en>A suggestion can lag a second or two behind a fast pass — it looks at photographs ahead of your cursor while you work. It never holds you up; the photograph itself is always instant.</p>
@@ -573,8 +580,8 @@
 
   <h2 data-en>Keys</h2>
   <h2 data-hr>Tipke</h2>
-  <p class="lede" data-en>Digits, Enter, Backspace and Escape are fixed. Everything else can be changed.</p>
-  <p class="lede" data-hr>Znamenke, Enter, Backspace i Esc su nepromjenjivi. Sve ostalo možete promijeniti.</p>
+  <p class="lede" data-en>The album window's keys are fixed. Everything else can be changed.</p>
+  <p class="lede" data-hr>Tipke prozora za album su nepromjenjive. Sve ostalo možete promijeniti.</p>
 
   <figure class="shot">
     <img src="img/keys.png" alt="" loading="lazy" decoding="async">
@@ -584,18 +591,24 @@
 
   <div class="keys">
     <section>
-      <h3 data-en>Always</h3><h3 data-hr>Uvijek</h3>
-      <div class="row"><span class="combo"><kbd>0</kbd>&ndash;<kbd>9</kbd></span>
-        <span class="what" data-en>Type a rider's number</span><span class="what" data-hr>Upišite broj vozača</span></div>
+      <h3 data-en>The album window</h3><h3 data-hr>Prozor za album</h3>
+      <div class="row"><span class="combo"><kbd>0</kbd>&ndash;<kbd>9</kbd><kbd>A</kbd>&ndash;<kbd>Z</kbd></span>
+        <span class="what" data-en>Type the album's name &mdash; digits, and letters if it has them: <code>42</code>, <code>42 b</code>, <code>42 Marko</code></span>
+        <span class="what" data-hr>Upišite naziv albuma &mdash; znamenke, i slova ako ih ima: <code>42</code>, <code>42 b</code>, <code>42 Marko</code></span></div>
       <div class="row"><span class="combo"><kbd>Enter</kbd></span>
-        <span class="what" data-en>File the selected run — or accept the suggestion, if nothing is typed</span>
-        <span class="what" data-hr>Spremi označeni niz — ili prihvati prijedlog, ako ništa nije upisano</span></div>
+        <span class="what" data-en>Do what the window says &mdash; file, open or show. If it asks first, <kbd>Enter</kbd> again files anyway</span>
+        <span class="what" data-hr>Učini ono što prozor kaže &mdash; spremi, otvori ili prikaži. Ako najprije pita, ponovni <kbd>Enter</kbd> ipak sprema</span></div>
+      <div class="row"><span class="combo"><kbd>Tab</kbd></span>
+        <span class="what" data-en>Fill in the first album listed &mdash; the ones that start with what you have typed</span>
+        <span class="what" data-hr>Upiši prvi nabrojeni album &mdash; od onih koji počinju onim što ste upisali</span></div>
       <div class="row"><span class="combo"><kbd>Backspace</kbd></span>
-        <span class="what" data-en>Delete the last digit &mdash; a letter from <code>42 b</code> goes with it</span>
-        <span class="what" data-hr>Obriši zadnju znamenku &mdash; slovo iz <code>42 b</code> odlazi s njom</span></div>
+        <span class="what" data-en>Delete what you typed, a character at a time. Outside the window it deletes the photo instead &mdash; see <em>Filing</em></span>
+        <span class="what" data-hr>Briše upisano, znak po znak. Izvan prozora umjesto toga briše fotografiju &mdash; vidi <em>Spremanje</em></span></div>
       <div class="row"><span class="combo"><kbd>Esc</kbd></span>
-        <span class="what" data-en>Dismiss a warning &mdash; then clear what you typed &mdash; then leave album view &mdash; then collapse the selection, <em>in that order</em>. In the album browser: from a photo opened large back to the grid, then out to the photos</span>
-        <span class="what" data-hr>Odbaci upozorenje &mdash; zatim obriši upisano &mdash; zatim izađi iz pregleda albuma &mdash; zatim poništi označeno, <em>tim redom</em>. U pregledniku albuma: s uvećane fotografije natrag na mrežu, pa van, na fotografije</span></div>
+        <span class="what" data-en>Close the window without doing anything. With none open: leave album view &mdash; then collapse the selection, <em>in that order</em>. In the album browser: from a photo opened large back to the grid, then out to the photos</span>
+        <span class="what" data-hr>Zatvori prozor bez ikakve radnje. Bez otvorenog prozora: izađi iz pregleda albuma &mdash; zatim poništi označeno, <em>tim redom</em>. U pregledniku albuma: s uvećane fotografije natrag na mrežu, pa van, na fotografije</span></div>
+      <p class="note" data-en>With no window open, a digit or <kbd>Enter</kbd> does nothing but say which key opens one.</p>
+      <p class="note" data-hr>Bez otvorenog prozora znamenka ili <kbd>Enter</kbd> ne rade ništa osim što kažu koja ga tipka otvara.</p>
     </section>
 
     <section>
@@ -639,32 +652,33 @@
         <span class="what" data-en>Take this photo out of the selection &mdash; again to put it back</span>
         <span class="what" data-hr>Izbaci ovu fotografiju iz označenog &mdash; ponovno da je vratiš</span></div>
       <div class="row"><span class="combo"><kbd>Shift</kbd>+<kbd>&rarr;</kbd></span>
-        <span class="what" data-en>Extend the selection forward &mdash; for when a burst was cut short</span>
-        <span class="what" data-hr>Proširi označeno naprijed &mdash; kad je rafal prekratko odrezan</span></div>
+        <span class="what" data-en>Extend the selection forward &mdash; for when a burst was cut short. After <kbd>Shift</kbd>+<kbd>&larr;</kbd>, it deselects those photos again, one at a time</span>
+        <span class="what" data-hr>Proširi označeno naprijed &mdash; kad je rafal prekratko odrezan. Nakon <kbd>Shift</kbd>+<kbd>&larr;</kbd> te fotografije ponovno odznačuje, jednu po jednu</span></div>
       <div class="row"><span class="combo"><kbd>Shift</kbd>+<kbd>&larr;</kbd></span>
-        <span class="what" data-en>Extend the selection back</span><span class="what" data-hr>Proširi označeno natrag</span></div>
+        <span class="what" data-en>Extend the selection back. After <kbd>Shift</kbd>+<kbd>&rarr;</kbd>, it deselects those photos again, one at a time</span>
+        <span class="what" data-hr>Proširi označeno natrag. Nakon <kbd>Shift</kbd>+<kbd>&rarr;</kbd> te fotografije ponovno odznačuje, jednu po jednu</span></div>
     </section>
 
     <section>
       <h3 data-en>Filing</h3><h3 data-hr>Spremanje</h3>
       <div class="row"><span class="combo"><kbd>J</kbd></span>
-        <span class="what" data-en>Copy into the album in the box &mdash; the same as <kbd>Enter</kbd></span>
-        <span class="what" data-hr>Kopiraj u album iz okvira &mdash; isto kao <kbd>Enter</kbd></span></div>
+        <span class="what" data-en>Copy into an album &mdash; opens the album window, holding the suggestion if there is one</span>
+        <span class="what" data-hr>Kopiraj u album &mdash; otvara prozor za album, s prijedlogom ako ga ima</span></div>
       <div class="row"><span class="combo"><kbd>L</kbd></span>
-        <span class="what" data-en>Move into it &mdash; copies it there, then deletes the original from the photos folder. The only key that deletes one of your photographs; <kbd>Mod</kbd>+<kbd>Z</kbd> puts it back</span>
-        <span class="what" data-hr>Premjesti u njega &mdash; kopira onamo, pa obriše izvornik iz mape s fotografijama. Jedina tipka koja briše vašu fotografiju; <kbd>Mod</kbd>+<kbd>Z</kbd> je vraća</span></div>
-      <div class="row"><span class="combo"><kbd>-</kbd></span>
-        <span class="what" data-en>Another rider with the same number &mdash; 42, then 42 b, then 42 c. <kbd>Num -</kbd>, beside the number pad, does the same</span>
-        <span class="what" data-hr>Drugi vozač s istim brojem &mdash; 42, pa 42 b, pa 42 c. <kbd>Num -</kbd>, pokraj numeričke tipkovnice, radi isto</span></div>
+        <span class="what" data-en>Move into an album &mdash; copies it there, then deletes the original from the photos folder. Its window says so before you press <kbd>Enter</kbd>; <kbd>Mod</kbd>+<kbd>Z</kbd> puts it back</span>
+        <span class="what" data-hr>Premjesti u album &mdash; kopira onamo, pa obriše izvornik iz mape s fotografijama. Njezin prozor to kaže prije nego pritisnete <kbd>Enter</kbd>; <kbd>Mod</kbd>+<kbd>Z</kbd> je vraća</span></div>
       <div class="row"><span class="combo"><kbd>&uarr;</kbd><kbd>&darr;</kbd></span>
-        <span class="what" data-en>Next or previous motorcycle in this photo &mdash; the number, the suggestion and the warning follow the one outlined</span>
-        <span class="what" data-hr>Prebaci na sljedeći ili prethodni motor na fotografiji &mdash; broj, prijedlog i upozorenje idu uz obrubljeni</span></div>
+        <span class="what" data-en>Next or previous motorcycle in this photo &mdash; the number, the suggestion and the warning follow the one outlined. They work inside the album window too</span>
+        <span class="what" data-hr>Prebaci na sljedeći ili prethodni motor na fotografiji &mdash; broj, prijedlog i upozorenje idu uz obrubljeni. Rade i u prozoru za album</span></div>
       <div class="row"><span class="combo"><kbd>Shift</kbd>+<kbd>W</kbd></span>
         <span class="what" data-en>Stop warning before filing into an album holding a different bike &mdash; remembered between sessions, and there is a switch for it in the settings panel</span>
         <span class="what" data-hr>Prestani upozoravati prije spremanja u album u kojem je drugi motor &mdash; pamti se između pokretanja, a u prozoru s postavkama je i prekidač za to</span></div>
       <div class="row"><span class="combo"><kbd>X</kbd></span>
         <span class="what" data-en>Reject &mdash; or remove from the album you are viewing</span>
         <span class="what" data-hr>Odbaci &mdash; ili ukloni iz albuma koji pregledavate</span></div>
+      <div class="row"><span class="combo"><kbd>Backspace</kbd></span>
+        <span class="what" data-en>Delete the photo under the cursor &mdash; that one only, even in a selected burst, and one per press. Its files go into <em>Deleted by Sofric Sort</em> in your photos folder and it leaves its albums; <kbd>Mod</kbd>+<kbd>Z</kbd> puts it back. On a Mac keyboard this key is called <em>delete</em></span>
+        <span class="what" data-hr>Obriši fotografiju pod pokazivačem &mdash; samo nju, i u označenom rafalu, jednu po pritisku. Njezine datoteke odlaze u <em>Deleted by Sofric Sort</em> u mapi s fotografijama, a ona izlazi iz svojih albuma; <kbd>Mod</kbd>+<kbd>Z</kbd> je vraća. Na Macovoj tipkovnici ta se tipka zove <em>delete</em></span></div>
       <div class="row"><span class="combo"><kbd>Mod</kbd>+<kbd>Z</kbd></span>
         <span class="what" data-en>Undo. Only ever deletes copies the app made itself</span>
         <span class="what" data-hr>Poništi. Briše isključivo kopije koje je program sam napravio</span></div>
@@ -676,8 +690,8 @@
     <section>
       <h3 data-en>Looking</h3><h3 data-hr>Pregled</h3>
       <div class="row"><span class="combo"><kbd>F</kbd></span>
-        <span class="what" data-en>Show only one album &mdash; type a number first to choose which, <kbd>Esc</kbd> comes back</span>
-        <span class="what" data-hr>Prikaži samo jedan album &mdash; upišite broj prije da odaberete koji, <kbd>Esc</kbd> vraća natrag</span></div>
+        <span class="what" data-en>Show only one album &mdash; the window asks which, <kbd>Esc</kbd> comes back</span>
+        <span class="what" data-hr>Prikaži samo jedan album &mdash; prozor pita koji, <kbd>Esc</kbd> vraća natrag</span></div>
       <div class="row"><span class="combo"><kbd>U</kbd></span>
         <span class="what" data-en>Show only photos you haven&rsquo;t decided about &mdash; <kbd>Esc</kbd> comes back</span>
         <span class="what" data-hr>Prikaži samo fotografije o kojima niste odlučili &mdash; <kbd>Esc</kbd> vraća natrag</span></div>
@@ -702,8 +716,8 @@
         <span class="what" data-en>Reveal this photo in Explorer or Finder</span>
         <span class="what" data-hr>Pokaži ovu fotografiju u Exploreru ili Finderu</span></div>
       <div class="row"><span class="combo"><kbd>O</kbd></span>
-        <span class="what" data-en>Open the albums folder &mdash; type a number first to open just that rider&rsquo;s</span>
-        <span class="what" data-hr>Otvori mapu s albumima &mdash; upišite broj prije da otvorite samo mapu tog vozača</span></div>
+        <span class="what" data-en>Open an album&rsquo;s folder &mdash; the window asks which; left empty, the albums folder</span>
+        <span class="what" data-hr>Otvori mapu albuma &mdash; prozor pita koji; ostavljen prazan, mapu s albumima</span></div>
       <div class="row"><span class="combo"><kbd>F11</kbd></span>
         <span class="what" data-en>Full screen &mdash; <kbd>Mod</kbd>+<kbd>Ctrl</kbd>+<kbd>F</kbd> on a Mac</span>
         <span class="what" data-hr>Preko cijelog zaslona &mdash; <kbd>Mod</kbd>+<kbd>Ctrl</kbd>+<kbd>F</kbd> na Macu</span></div>
@@ -718,7 +732,8 @@
         <span class="what" data-en>What is left before this job is done</span>
         <span class="what" data-hr>Što je ostalo prije nego je posao gotov</span></div>
       <div class="row"><span class="combo"><kbd>Mod</kbd>+<kbd>E</kbd></span>
-        <span class="what" data-en>Make previews for customers</span><span class="what" data-hr>Napravi pregledne slike za kupce</span></div>
+        <span class="what" data-en>Make previews for customers &mdash; the window asks for which album; left empty, every album</span>
+        <span class="what" data-hr>Napravi pregledne slike za kupce &mdash; prozor pita za koji album; ostavljen prazan, za sve albume</span></div>
       <div class="row"><span class="combo"><kbd>Mod</kbd>+<kbd>,</kbd></span>
         <span class="what" data-en>Change any key binding &mdash; or click the gear at the bottom right</span>
         <span class="what" data-hr>Promijeni bilo koju tipku &mdash; ili kliknite zupčanik dolje desno</span></div>
@@ -737,8 +752,8 @@
     <section>
       <h3 data-en>Album browser</h3><h3 data-hr>Preglednik albuma</h3>
       <div class="row"><span class="combo"><kbd>A</kbd></span>
-        <span class="what" data-en>Open it, and again to leave &mdash; type a number first to open that album</span>
-        <span class="what" data-hr>Otvori ga, i ponovno za izlaz &mdash; upišite broj prije da otvorite taj album</span></div>
+        <span class="what" data-en>Open it &mdash; the window asks which album, holding the one you are on; inside the browser, to go to another. <kbd>Esc</kbd> leaves</span>
+        <span class="what" data-hr>Otvori ga &mdash; prozor pita koji album, s onim na kojem ste; unutar preglednika, za odlazak u drugi. <kbd>Esc</kbd> izlazi</span></div>
       <div class="row"><span class="combo"><kbd>&larr;</kbd><kbd>&rarr;</kbd><kbd>&uarr;</kbd><kbd>&darr;</kbd></span>
         <span class="what" data-en>Move about the grid &mdash; <kbd>Shift</kbd> with them selects several, and <kbd>Shift</kbd>+<kbd>&uarr;</kbd> or <kbd>Shift</kbd>+<kbd>&darr;</kbd> takes a row at a time</span>
         <span class="what" data-hr>Kretanje po mreži &mdash; uz <kbd>Shift</kbd> označavate više njih, a <kbd>Shift</kbd>+<kbd>&uarr;</kbd> ili <kbd>Shift</kbd>+<kbd>&darr;</kbd> uzima cijeli red</span></div>
@@ -752,9 +767,12 @@
       <div class="row"><span class="combo"><kbd>X</kbd></span>
         <span class="what" data-en>Take the selected photos out of this album</span>
         <span class="what" data-hr>Izvadi označene fotografije iz ovog albuma</span></div>
+      <div class="row"><span class="combo"><kbd>Backspace</kbd></span>
+        <span class="what" data-en>Delete the photo under the cursor from the job &mdash; out of every album, into <em>Deleted by Sofric Sort</em>. A photo not from this job is left alone</span>
+        <span class="what" data-hr>Obriši fotografiju pod pokazivačem iz posla &mdash; iz svih albuma, u <em>Deleted by Sofric Sort</em>. Fotografija koja nije iz ovog posla ostaje netaknuta</span></div>
       <div class="row"><span class="combo"><kbd>J</kbd></span>
-        <span class="what" data-en>Copy the selected photos into the album in the box as well &mdash; the same as <kbd>Enter</kbd> here</span>
-        <span class="what" data-hr>Kopiraj označene fotografije i u album iz okvira &mdash; isto kao <kbd>Enter</kbd> ovdje</span></div>
+        <span class="what" data-en>Copy the selected photos into another album as well &mdash; named in the album window</span>
+        <span class="what" data-hr>Kopiraj označene fotografije i u drugi album &mdash; imenovan u prozoru za album</span></div>
       <div class="row"><span class="combo"><kbd>L</kbd></span>
         <span class="what" data-en>Move them into it &mdash; they leave the album you are looking at. A photo the app did not put there is copied on and left exactly where it is</span>
         <span class="what" data-hr>Premjesti ih u njega &mdash; odlaze iz albuma koji gledate. Fotografija koju program ondje nije stavio kopira se dalje i ostaje točno gdje jest</span></div>
@@ -782,12 +800,15 @@
       <div class="row"><span class="combo"><kbd>Space</kbd></span>
         <span class="what" data-en>Open the photo large to read the number, or back to the pile &mdash; there, <kbd>&uarr;</kbd> <kbd>&darr;</kbd> move the outline to another bike</span>
         <span class="what" data-hr>Otvori fotografiju uvećano da pročitaš broj, ili natrag na hrpu &mdash; tamo <kbd>&uarr;</kbd> <kbd>&darr;</kbd> premještaju obrub na drugi motor</span></div>
-      <div class="row"><span class="combo"><kbd>Enter</kbd></span>
-        <span class="what" data-en>File the whole pile into the number in the box</span>
-        <span class="what" data-hr>Spremi cijelu hrpu u broj iz okvira</span></div>
+      <div class="row"><span class="combo"><kbd>J</kbd></span>
+        <span class="what" data-en>Name the pile &mdash; the album window opens holding its suggestion, and <kbd>Enter</kbd> files the whole pile</span>
+        <span class="what" data-hr>Imenuj hrpu &mdash; prozor za album otvara se s njezinim prijedlogom, a <kbd>Enter</kbd> sprema cijelu hrpu</span></div>
       <div class="row"><span class="combo"><kbd>X</kbd></span>
         <span class="what" data-en>Take the selected photos out of the pile &mdash; again to put them back</span>
         <span class="what" data-hr>Izvadi označene fotografije iz hrpe &mdash; ponovno da ih vratiš</span></div>
+      <div class="row"><span class="combo"><kbd>Backspace</kbd></span>
+        <span class="what" data-en>Delete the photo under the cursor &mdash; it leaves the pile, and <kbd>Mod</kbd>+<kbd>Z</kbd> puts it back in</span>
+        <span class="what" data-hr>Obriši fotografiju pod pokazivačem &mdash; izlazi iz hrpe, a <kbd>Mod</kbd>+<kbd>Z</kbd> je vraća u nju</span></div>
       <div class="row"><span class="combo"><kbd>PgUp</kbd><kbd>PgDn</kbd></span>
         <span class="what" data-en>Previous or next pile &mdash; or click one in the list</span>
         <span class="what" data-hr>Prethodna ili sljedeća hrpa &mdash; ili kliknite jednu na popisu</span></div>
@@ -823,8 +844,8 @@
   <div class="callout">
     <p data-en><strong>If you forget a key, press <kbd>F1</kbd>, or click the gear at the bottom right of the photo.</strong> The gear lists every action with the key that runs it and lets you change any of them; a button at its top opens the same list read-only, which ends with a button that opens this handbook. The gear is the only button on the sorting view — everything else is the keyboard, apart from the strip beneath the photo, which you can drag.</p>
     <p data-hr><strong>Ako zaboravite tipku, pritisnite <kbd>F1</kbd> ili kliknite zupčanik u donjem desnom kutu fotografije.</strong> Zupčanik prikazuje popis svih radnji s tipkom koja ih pokreće i svaku možete promijeniti; gumb na njegovu vrhu otvara isti popis samo za čitanje, koji završava gumbom za otvaranje ovog priručnika. Zupčanik je jedini gumb na zaslonu za razvrstavanje — sve ostalo je tipkovnica, osim trake ispod fotografije, koju možete povlačiti.</p>
-    <p data-en>The same panel has the language switch at the top: <em>English</em> or <em>Hrvatski</em>. The app starts in your computer's language the first time, and remembers whichever you choose. Under it, <em>Size</em> makes everything bigger or smaller &mdash; the photographs, the strip, the number box, all of it &mdash; and is remembered too. Below that are switches for the two things <kbd>Shift</kbd>+<kbd>B</kbd> and <kbd>Shift</kbd>+<kbd>W</kbd> turn off; while either is off, the top right corner of the photo says which, and says nothing at all while both are on.</p>
-    <p data-hr>U istom prozoru, na vrhu, je i izbor jezika: <em>English</em> ili <em>Hrvatski</em>. Program prvi put kreće na jeziku vašeg računala, a zatim pamti što ste odabrali. Ispod toga <em>Veličina</em> povećava ili smanjuje sve &mdash; fotografije, traku, okvir s brojem, sve &mdash; i također se pamti. Ispod su prekidači za ono što isključuju <kbd>Shift</kbd>+<kbd>B</kbd> i <kbd>Shift</kbd>+<kbd>W</kbd>; dok je jedno od toga isključeno, gornji desni kut fotografije kaže koje, a ne kaže ništa dok je oboje uključeno.</p>
+    <p data-en>The same panel has the language switch at the top: <em>English</em> or <em>Hrvatski</em>. The app starts in your computer's language the first time, and remembers whichever you choose. Under it, <em>Size</em> makes everything bigger or smaller &mdash; the photographs, the strip, the album window, all of it &mdash; and is remembered too. Below that are switches for the two things <kbd>Shift</kbd>+<kbd>B</kbd> and <kbd>Shift</kbd>+<kbd>W</kbd> turn off; while either is off, the top right corner of the photo says which, and says nothing at all while both are on.</p>
+    <p data-hr>U istom prozoru, na vrhu, je i izbor jezika: <em>English</em> ili <em>Hrvatski</em>. Program prvi put kreće na jeziku vašeg računala, a zatim pamti što ste odabrali. Ispod toga <em>Veličina</em> povećava ili smanjuje sve &mdash; fotografije, traku, prozor za album, sve &mdash; i također se pamti. Ispod su prekidači za ono što isključuju <kbd>Shift</kbd>+<kbd>B</kbd> i <kbd>Shift</kbd>+<kbd>W</kbd>; dok je jedno od toga isključeno, gornji desni kut fotografije kaže koje, a ne kaže ništa dok je oboje uključeno.</p>
   </div>
 
   <p class="note" style="margin-top:20px" data-en><kbd>Mod</kbd> is <kbd>Ctrl</kbd> on Windows and <kbd>Cmd</kbd> on a Mac. Keys are bound to the physical key, so they behave the same on either machine whatever the keyboard layout.</p>
@@ -841,26 +862,27 @@
     <figcaption data-hr>Odabir mjesta za pregledne slike i prikupljanje onoga &#353;to je kupac odabrao.</figcaption>
   </figure>
 
-  <p data-en><kbd>Mod</kbd>+<kbd>E</kbd> makes a watermarked, numbered copy of every filed photograph, into a folder you choose. Send that folder to the customer. When they reply with numbers — <span style="font-family:var(--mono);font-size:14px">3, 7, 12</span> or <span style="font-family:var(--mono);font-size:14px">3-9</span> — type the album and their numbers into <em>A customer has picked some out</em>, and the full-resolution originals are gathered into one folder, ready to deliver.</p>
-  <p data-hr><kbd>Mod</kbd>+<kbd>E</kbd> radi kopiju svake spremljene fotografije s vodenim žigom i brojem, u mapu koju odaberete. Tu mapu pošaljete kupcu. Kad odgovori brojevima — <span style="font-family:var(--mono);font-size:14px">3, 7, 12</span> ili <span style="font-family:var(--mono);font-size:14px">3-9</span> — upišete album i njegove brojeve u polje <em>Kupac je odabrao fotografije</em>, i originali u punoj rezoluciji skupe se u jednu mapu, spremni za isporuku.</p>
+  <p data-en><kbd>Mod</kbd>+<kbd>E</kbd> and <kbd>Enter</kbd> open the previews, which make a watermarked, numbered copy of every filed photograph, into a folder you choose. Send that folder to the customer. When they reply with numbers — <span style="font-family:var(--mono);font-size:14px">3, 7, 12</span> or <span style="font-family:var(--mono);font-size:14px">3-9</span> — type the album and their numbers into <em>A customer has picked some out</em>, and the full-resolution originals are gathered into one folder, ready to deliver.</p>
+  <p data-hr><kbd>Mod</kbd>+<kbd>E</kbd> i <kbd>Enter</kbd> otvaraju pregledne slike, koje rade kopiju svake spremljene fotografije s vodenim žigom i brojem, u mapu koju odaberete. Tu mapu pošaljete kupcu. Kad odgovori brojevima — <span style="font-family:var(--mono);font-size:14px">3, 7, 12</span> ili <span style="font-family:var(--mono);font-size:14px">3-9</span> — upišete album i njegove brojeve u polje <em>Kupac je odabrao fotografije</em>, i originali u punoj rezoluciji skupe se u jednu mapu, spremni za isporuku.</p>
 
   <p data-en><strong>A clip gets a preview too</strong> — a small, silent, marked copy with the same number burnt into it, sharing one run of numbers with the photos, so a customer picks number 47 without caring which it is. These are made one second per second of clip, so an album with a dozen in it takes a couple of minutes rather than a moment; the screen says how long before it starts, and <em>Stop</em> works throughout.</p>
   <p data-hr><strong>I isječak dobiva pregled</strong> — malu, nijemu, označenu kopiju s istim brojem upisanim u nju, u istom nizu brojeva kao fotografije, pa kupac odabere broj 47 bez razmišljanja o čemu se radi. Izrađuju se sekundu po sekundi isječka, pa album s desetak njih traje nekoliko minuta, a ne trenutak; prije početka piše koliko će trajati, a <em>Stop</em> radi cijelo vrijeme.</p>
 
-  <p data-en><strong>One album at a time, when that is what you want.</strong> Type the number before <kbd>Mod</kbd>+<kbd>E</kbd>, or click an album in the panel, and only that album's previews are made &mdash; the album is outlined and the button says so. The same click fills in the customer's album box, which also completes from the albums you have as you type. Click the album again to go back to every album. The panel says about how long is left while it runs; <kbd>Esc</kbd> no longer stops it &mdash; press <em>Stop</em> for that. After the originals are gathered, a button opens the folder they went to.</p>
-  <p data-hr><strong>Jedan album, kad vam to treba.</strong> Upišite broj prije <kbd>Mod</kbd>+<kbd>E</kbd>, ili kliknite album u prozoru, i izrađuju se samo pregledne slike tog albuma &mdash; album je obrubljen, a gumb to i kaže. Isti klik upisuje album u polje kupca, koje se i samo dopunjava iz vaših albuma dok tipkate. Kliknite album ponovno za povratak na sve albume. Dok izrada traje, prozor kaže otprilike koliko je još ostalo; <kbd>Esc</kbd> je više ne zaustavlja &mdash; za to pritisnite <em>Stop</em>. Kad su originali skupljeni, gumb otvara mapu u koju su otišli.</p>
+  <p data-en><strong>One album at a time, when that is what you want.</strong> Name it in the window <kbd>Mod</kbd>+<kbd>E</kbd> opens, or click an album in the panel, and only that album's previews are made &mdash; the album is outlined and the button says so. The same click fills in the customer's album box, which also completes from the albums you have as you type. Click the album again to go back to every album. The panel says about how long is left while it runs; <kbd>Esc</kbd> no longer stops it &mdash; press <em>Stop</em> for that. After the originals are gathered, a button opens the folder they went to.</p>
+  <p data-hr><strong>Jedan album, kad vam to treba.</strong> Imenujte ga u prozoru koji otvara <kbd>Mod</kbd>+<kbd>E</kbd>, ili kliknite album na ploči, i izrađuju se samo pregledne slike tog albuma &mdash; album je obrubljen, a gumb to i kaže. Isti klik upisuje album u polje kupca, koje se i samo dopunjava iz vaših albuma dok tipkate. Kliknite album ponovno za povratak na sve albume. Dok izrada traje, prozor kaže otprilike koliko je još ostalo; <kbd>Esc</kbd> je više ne zaustavlja &mdash; za to pritisnite <em>Stop</em>. Kad su originali skupljeni, gumb otvara mapu u koju su otišli.</p>
 
   <p class="note" data-en>Previews can't be written into your photos folder or your albums folder — the app refuses both. Running it again is safe: anything already made is left alone.</p>
   <p class="note" data-hr>Pregledne slike ne mogu se spremiti u vašu mapu s fotografijama ni u mapu s albumima — program to odbija. Ponovno pokretanje je sigurno: ono što je već napravljeno ostaje netaknuto.</p>
 
   <h2 data-en>Worth knowing</h2>
   <h2 data-hr>Dobro je znati</h2>
-  <p class="lede" data-en>Eight things that will save you a puzzled minute.</p>
-  <p class="lede" data-hr>Osam stvari koje &#263;e vam u&#353;tedjeti minutu &#269;u&#273;enja.</p>
+  <p class="lede" data-en>Nine things that will save you a puzzled minute.</p>
+  <p class="lede" data-hr>Devet stvari koje &#263;e vam u&#353;tedjeti minutu &#269;u&#273;enja.</p>
 
   <ul class="plain" data-en>
     <li><strong>Undo is safe.</strong> It deletes only files the app copied itself, and only in the albums folder you have open. A photo you put in an album by hand is never touched.</li>
-    <li><strong>Read the number before you press <kbd>Enter</kbd> on an empty box.</strong> A suggestion is usually right, but not always &mdash; and on a rider&rsquo;s first pass anything it offers is someone else.</li>
+    <li><strong>A photo deleted with <kbd>Backspace</kbd> is not gone.</strong> Its files are in a folder called <em>Deleted by Sofric Sort</em> at the top of your photos folder, in the sub-folder they came from. <kbd>Mod</kbd>+<kbd>Z</kbd> puts it back, even after the project has been closed; or move the files back where they were yourself, and the next time the project opens it is an ordinary photo again. The app never empties that folder &mdash; delete it yourself when you are sure.</li>
+    <li><strong>Read the number before you take a suggestion with <kbd>J</kbd> and <kbd>Enter</kbd>.</strong> A suggestion is usually right, but not always &mdash; and on a rider&rsquo;s first pass anything it offers is someone else.</li>
     <li><strong>There is no zoom.</strong> This is a tool for deciding whose photo it is, not for judging whether it is sharp &mdash; which is why every photo appears instantly. A moment after you stop on one it sharpens, because the app then reads the photo itself; if your card reader or drive is slow, a switch in the settings panel keeps just the quick preview.</li>
     <li><strong>Clips and RAW files are newer than the rest.</strong> Both work, neither has sorted a real day&rsquo;s work yet, so check the first album of either.</li>
     <li><strong>Your computer will warn you once</strong> the first time you open the app, because it is not code-signed yet. After that, never again.</li>
@@ -870,7 +892,8 @@
   </ul>
   <ul class="plain" data-hr>
     <li><strong>Poni&#353;tavanje je sigurno.</strong> Bri&#353;e samo datoteke koje je program sam kopirao, i to samo u mapi s albumima koju imate otvorenu. Fotografija koju ste ru&#269;no stavili u album nikad se ne dira.</li>
-    <li><strong>Pro&#269;itajte broj prije nego pritisnete <kbd>Enter</kbd> na praznom okviru.</strong> Prijedlog je obi&#269;no to&#269;an, ali ne uvijek &mdash; a pri prvom prolasku vozača sve &#353;to ponudi je netko drugi.</li>
+    <li><strong>Fotografija obrisana tipkom <kbd>Backspace</kbd> nije nestala.</strong> Njezine su datoteke u mapi <em>Deleted by Sofric Sort</em> na vrhu mape s fotografijama, u podmapi iz koje su došle. <kbd>Mod</kbd>+<kbd>Z</kbd> je vraća, čak i nakon što je projekt zatvoren; ili sami vratite datoteke gdje su bile, i sljedeći put kad se projekt otvori ona je opet obična fotografija. Program tu mapu nikad ne prazni &mdash; obrišite je sami kad budete sigurni.</li>
+    <li><strong>Pro&#269;itajte broj prije nego prihvatite prijedlog s <kbd>J</kbd> i <kbd>Enter</kbd>.</strong> Prijedlog je obi&#269;no to&#269;an, ali ne uvijek &mdash; a pri prvom prolasku vozača sve &#353;to ponudi je netko drugi.</li>
     <li><strong>Nema pove&#263;avanja.</strong> Ovo je alat za odlu&#269;ivanje &#269;ija je fotografija, ne za procjenu o&#353;trine &mdash; upravo zato se svaka prikazuje odmah. Trenutak nakon &#353;to se zaustavite na njoj izo&#353;tri se, jer program tada &#269;ita samu fotografiju; ako vam je &#269;ita&#269; kartica ili disk spor, prekida&#269; u prozoru s postavkama ostavlja samo brzi pregled.</li>
     <li><strong>Isje&#269;ci i RAW datoteke noviji su od ostaloga.</strong> Oboje radi, ali nijedno jo&#353; nije razvrstalo pravi radni dan, pa provjerite prvi album.</li>
     <li><strong>Ra&#269;unalo &#263;e vas jednom upozoriti</strong> pri prvom otvaranju programa, jer jo&#353; nije digitalno potpisan. Nakon toga vi&#353;e nikad.</li>
@@ -880,8 +903,8 @@
   </ul>
 
   <footer class="end">
-    <span data-en>Sofric Sort &middot; burst gap 400&nbsp;ms &middot; suggestions from 0.60 similarity &middot; warnings from 0.70, or below 0.20 &middot; the source folder is only ever read</span>
-    <span data-hr>Sofric Sort &middot; razmak rafala 400&nbsp;ms &middot; prijedlozi od 0,60 sličnosti &middot; upozorenja od 0,70, ili ispod 0,20 &middot; izvorna mapa se samo čita</span>
+    <span data-en>Sofric Sort &middot; burst gap 400&nbsp;ms &middot; suggestions from 0.60 similarity &middot; warnings from 0.70, or below 0.20 &middot; the source folder is only ever read, but for <kbd>L</kbd> and <kbd>Backspace</kbd></span>
+    <span data-hr>Sofric Sort &middot; razmak rafala 400&nbsp;ms &middot; prijedlozi od 0,60 sličnosti &middot; upozorenja od 0,70, ili ispod 0,20 &middot; izvorna mapa se samo čita, osim za <kbd>L</kbd> i <kbd>Backspace</kbd></span>
   </footer>
 </div>
 
